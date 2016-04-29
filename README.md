@@ -11,6 +11,3 @@ Aplikace bude zprovozněna v JSP/Servlet kontejneru Jetty.
 Rozdělení práce na projektu:
 
 1. Lukáš Kotol - práce s Jetty serverem, propojení html šablon s databázovou logikou
-2.
-3.
-4.
