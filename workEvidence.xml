@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+    <company> Fixed information about company </company>
+    <employees>
+        <employee>
+            <id></id>
+            <name></name>
+            <surname></surname>
+        </employee>
+    </employees>
+    <works>
+        <work>
+            <type></type>
+            <rate></rate>
+        </work>
+    </works>
+    <records>
+        <record period="mm/rrrr">
+            <id></id>
+            <employee>
+                <id></id>
+                <name></name>
+                <surname></surname>
+            </employee>
+            <works>
+                <work>
+                    <type></type>
+                    <rate></rate>
+                    <hours></hours>
+                </work>
+            </works>
+        </record>
+    </records>
+    <invoices>
+        <invoice></invoice>
+    </invoices>
+</root>
