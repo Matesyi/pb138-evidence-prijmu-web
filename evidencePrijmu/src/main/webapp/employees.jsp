@@ -33,6 +33,9 @@
                             Bushwick small batch tote bag selfies, kitsch organic cardigan banjo craft beer before they sold out squid. Small batch franzen wayfarers meggings, poutine celiac leggings. Tofu put a bird on it venmo synth. Readymade kale chips green juice XOXO crucifix. Raw denim letterpress pork belly, sartorial food truck wayfarers semiotics thundercats neutra DIY schlitz gluten-free tacos asymmetrical. Four dollar toast pinterest narwhal locavore. Small batch cardigan vinyl, tumblr venmo tacos everyday carry typewriter man braid vice.
                         </p>
                     </div>
+                    <div class="col-md-4 col-md-offset-4">
+                        <a class="tile link-tile btn btn-block" href="employee.jsp" title="add new employee">Add new Employee</a>
+                    </div>
                 </div>
 
             </div>

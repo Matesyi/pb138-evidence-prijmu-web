@@ -19,7 +19,7 @@
             <div class="row body-section">
                 <div class="col-md-12">
                     <h1>
-                        Database browser
+                        Database Browser
                     </h1>
                 </div>
             </div>

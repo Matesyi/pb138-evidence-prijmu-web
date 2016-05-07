@@ -1,0 +1,11 @@
+{
+    "name": "simpledatagrid",
+    "dependencies": {
+        "blanket": "1.1.7",
+        "bootstrap": "3.3.4",
+        "jquery": "2.1.4",
+        "jquery-mockjax": "2.0.0-beta",
+        "prism": "gh-pages",
+        "qunit": "1.18.0"
+    }
+}
