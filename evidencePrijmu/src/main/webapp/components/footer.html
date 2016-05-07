@@ -1,0 +1,22 @@
+<div class="footer">
+    <p>Project to PB138 Modern Markup Languages and Their Applications (spring 2016). Project is under MIT License.</p>
+    <p>Realization team: Matej Karolyi, Lukas Kotol, Milos Silhar, Lumir Skvaril ; 2016</p> 
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+
+<script>
+$(document).mouseup(function (e)
+{
+    var container = $("#actualityScreen");
+
+    if (!container.is(e.target) // if the target of the click isn't the container...
+        && container.has(e.target).length === 0 && container.is(":visible")) // ... nor a descendant of the container
+    {
+        document.getElementById("cancel-button").click();
+    }
+});
+</script>
