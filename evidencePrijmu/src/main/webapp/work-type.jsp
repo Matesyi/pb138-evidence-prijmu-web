@@ -29,7 +29,7 @@
                         <div class="col-md-6 col-md-offset-3">
                             <label class="input-label">
                                 <h4>Work Type</h4>
-                                <input type="text" name="type" class="form-control" />
+                                <input type="text" name="work_type" class="form-control" />
                             </label>
                         </div>
                         <div class="col-md-6 col-md-offset-3">
@@ -38,14 +38,29 @@
                                 <input type="text" name="price" class="form-control" />
                             </label>
                         </div>
-                        <div class="col-md-4 col-md-offset-4 margin-box">
+                    </div>
+                    <div class="row margin-box">
+                        <div class="col-md-4 col-md-offset-2">
                             <input type="submit" class="tile link-tile btn btn-block" value="SAVE" />
                         </div>
+                        <div class="col-md-4">
+                            <a href="work-types.jsp" class="tile link-tile btn btn-block" >BACK</a>
+                        </div>
+
                     </div>
                 </form>
             </div>
         </div>
 
         <%@include  file="components/footer.html" %>
+
+        <script>
+            if (window.location.search !== "") {
+                var parameters = parseGetParameters(window.location.search);
+
+                $("input[name=work_type]").val(parameters.work_type);
+                $("input[name=price]").val(parameters.price);
+            }
+        </script>
     </body>
 </html>

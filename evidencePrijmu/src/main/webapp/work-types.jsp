@@ -14,7 +14,7 @@
     </head>
     <body>
         <%@include  file="components/navigation.html" %>
-        
+
         <div class="container">
             <div class="row body-section">
                 <div class="col-md-12">
@@ -25,22 +25,73 @@
             </div>
             <div class="body-section">
                 <div class="row">
-                    <div class="col-md-12">
-                        <p>
-                            Franzen twee food truck fingerstache raw denim, put a bird on it helvetica 8-bit tacos art party umami swag post-ironic biodiesel DIY. Hashtag mixtape meh schlitz try-hard aesthetic. Microdosing celiac before they sold out, literally flannel migas schlitz quinoa messenger bag food truck banh mi. Forage wolf kogi deep v leggings, cornhole street art chartreuse fashion axe. Meggings keytar banh mi brunch. Chambray franzen wolf, 8-bit ramps pop-up mlkshk pork belly man bun neutra whatever selvage VHS. Scenester chartreuse skateboard, keffiyeh hammock dreamcatcher chillwave farm-to-table four dollar toast affogato lumbersexual kinfolk gluten-free church-key sustainable.
-                        </p>
-                        <p>
-                            Bushwick small batch tote bag selfies, kitsch organic cardigan banjo craft beer before they sold out squid. Small batch franzen wayfarers meggings, poutine celiac leggings. Tofu put a bird on it venmo synth. Readymade kale chips green juice XOXO crucifix. Raw denim letterpress pork belly, sartorial food truck wayfarers semiotics thundercats neutra DIY schlitz gluten-free tacos asymmetrical. Four dollar toast pinterest narwhal locavore. Small batch cardigan vinyl, tumblr venmo tacos everyday carry typewriter man braid vice.
-                        </p>
-                    </div>
-                    <div class="col-md-4 col-md-offset-4">
+                    <div class="col-md-4">
                         <a class="tile link-tile btn btn-block" href="work-type.jsp" title="add new work type">Add new Work Type</a>
                     </div>
+                    <div class="col-md-4">
+                        <a class="tile link-tile btn btn-block" onclick="editSelectedWorkType('#work-types-table')" title="edit the work type">Edit selected Work Type</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="tile link-tile btn btn-block" href="#" title="delete the work type">Delete selected Work Type</a>
+                    </div>
                 </div>
-
+                <div class="row margin-box">
+                    <div class="col-md-8 col-md-offset-2">
+                        <table id="work-types-table" width="100%">
+                            <col width="70%">
+                            <col width="30%">
+                            <thead>
+                                <tr>
+                                    <th>Work Type</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
 
         <%@include  file="components/footer.html" %>
+
+        <script>
+            var workTypesData = [
+                {
+                    "work_type": "Coding",
+                    "price": 200
+                },
+                {
+                    "work_type": "Programming",
+                    "price": 300
+                },
+                {
+                    "work_type": "Testing",
+                    "price": 150
+                },
+                {
+                    "work_type": "Coffee breaking",
+                    "price": -40
+                },
+                {
+                    "work_type": "Creating documentation",
+                    "price": 150
+                }
+            ];
+
+            $('#work-types-table').simple_datagrid(
+                    {
+                        order_by: false,
+                        data: workTypesData
+                    }
+            );
+
+            function editSelectedWorkType(target) {
+                var row = $(target).simple_datagrid('getSelectedRow');
+                if (typeof row !== 'undefined' && row !== null) {
+                    $.redirect('work-type.jsp', {work_type: row.work_type, price: row.price}, 'GET');
+                }
+            }
+            ;
+        </script>
     </body>
 </html>

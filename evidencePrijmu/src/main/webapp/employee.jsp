@@ -28,6 +28,12 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
                             <label class="input-label">
+                                <h4>Personal number</h4>
+                                <input type="text" name="personal_number" class="form-control" />
+                            </label>
+                        </div>
+                        <div class="col-md-6 col-md-offset-3">
+                            <label class="input-label">
                                 <h4>Name</h4>
                                 <input type="text" name="name" class="form-control" />
                             </label>
@@ -38,8 +44,13 @@
                                 <input type="text" name="surname" class="form-control" />
                             </label>
                         </div>
-                        <div class="col-md-4 col-md-offset-4 margin-box">
+                    </div>
+                    <div class="row margin-box">
+                        <div class="col-md-4 col-md-offset-2">
                             <input type="submit" class="tile link-tile btn btn-block" value="SAVE" />
+                        </div>
+                        <div class="col-md-4">
+                            <a href="employees.jsp" class="tile link-tile btn btn-block" >BACK</a>
                         </div>
                     </div>
                 </form>
@@ -47,5 +58,15 @@
         </div>
 
         <%@include  file="components/footer.html" %>
+
+        <script>
+            if (window.location.search !== "") {
+                var parameters = parseGetParameters(window.location.search);
+
+                $("input[name=personal_number]").val(parameters.personal_number);
+                $("input[name=name]").val(parameters.name);
+                $("input[name=surname]").val(parameters.surname);
+            }
+        </script>
     </body>
 </html>

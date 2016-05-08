@@ -11,3 +11,17 @@
 <script src="vendor/jquery/jquery-2.2.3.min.js"></script>
 <!--Simple data grid-->
 <script src="vendor/simple-data-grid-master/simple.datagrid.js"></script>
+<!--jQuery redirect extension-->
+<script src="vendor/jquery.redirect-master/jquery.redirect.js"></script>
+
+<script>
+    function parseGetParameters(urlParams) {
+        var query = {};
+        var a = urlParams.substr(1).split('&');
+        for (var i = 0; i < a.length; i++) {
+            var b = a[i].split('=');
+            query[decodeURIComponent(b[0])] = decodeURIComponent(b[1].replace("+", " ") || '');
+        }
+        return query;
+    };
+</script>

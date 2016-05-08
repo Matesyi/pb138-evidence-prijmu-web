@@ -29,20 +29,23 @@
                         <a class="tile link-tile btn btn-block" href="employee.jsp" title="add new employee">Add new Employee</a>
                     </div>
                     <div class="col-md-4">
-                        <a class="tile link-tile btn btn-block" href="employee.jsp" title="add new employee">Edit selected Employee</a>
+                        <a class="tile link-tile btn btn-block" onclick="editSelectedEmployee('#employees-table')" title="edit the employee">Edit selected Employee</a>
                     </div>
                     <div class="col-md-4">
-                        <a class="tile link-tile btn btn-block" href="employee.jsp" title="add new employee">Delete selected Employee</a>
+                        <a class="tile link-tile btn btn-block" href="#" title="delete the employee">Delete selected Employee</a>
                     </div>
                 </div>
                 <div class="row margin-box">
                     <div class="col-md-8 col-md-offset-2">
                         <table id="employees-table" width="100%">
+                            <col width="26%">
+                            <col width="37%">
+                            <col width="37%">
                             <thead>
                                 <tr>
-                                    <th style="width:20%">Personal number</th>
-                                    <th style="width:40%">Name</th>
-                                    <th style="width:40%">Surname</th>
+                                    <th>Personal number</th>
+                                    <th>Name</th>
+                                    <th>Surname</th>
                                 </tr>
                             </thead>
                         </table>
@@ -52,7 +55,7 @@
         </div>
 
         <%@include  file="components/footer.html" %>
-        
+
         <script>
             var employeesData = [
                 {
@@ -81,20 +84,20 @@
                     "surname": "Scraper"
                 }
             ];
-            
-            function generate_footer($footer, datagrid, data) {
-                $footer.append(
-                    "<tr style='text-align: center'><td colspan='3'>my footer for this table</td></tr>"
-                );
-            };
 
             $('#employees-table').simple_datagrid(
-                {
-                    order_by: true,
-                    data: employeesData,
-                    on_generate_footer: generate_footer
-                }
+                    {
+                        order_by: false,
+                        data: employeesData
+                    }
             );
+    
+            function editSelectedEmployee(target) {
+                var row = $(target).simple_datagrid('getSelectedRow');
+                if (typeof row !== 'undefined' && row !== null) {
+                    $.redirect('employee.jsp', {personal_number: row.personal_number, name: row.name, surname: row.surname}, 'GET');
+                }
+            };
         </script>
     </body>
 </html>
