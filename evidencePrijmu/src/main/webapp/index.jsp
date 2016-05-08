@@ -40,6 +40,11 @@
                         <a class="tile link-tile btn btn-block" href="employees.jsp" title="employees">Employees</a>
                     </div>
                 </div>
+                <div class="row margin-box">
+                    <div class="col-md-2 col-md-offset-5">
+                        <a class="tile link-tile btn btn-block" href="help.jsp" title="go to help page">Help</a>
+                    </div>
+                </div>
             </div>
         </div>
 
