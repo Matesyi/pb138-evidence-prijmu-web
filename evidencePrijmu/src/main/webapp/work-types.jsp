@@ -26,13 +26,13 @@
             <div class="body-section">
                 <div class="row">
                     <div class="col-md-4">
-                        <a class="tile link-tile btn btn-block" href="work-type.jsp" title="add new work type">Add new Work Type</a>
+                        <a class="tile link-tile btn btn-block" href="work-type.jsp" title="add new work type"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add new Work Type</a>
                     </div>
                     <div class="col-md-4">
-                        <a class="tile link-tile btn btn-block" onclick="editSelectedWorkType('#work-types-table')" title="edit the work type">Edit selected Work Type</a>
+                        <a class="tile link-tile btn btn-block" onclick="editSelectedWorkType('#work-types-table')" title="edit the work type"><i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Edit selected Work Type</a>
                     </div>
                     <div class="col-md-4">
-                        <a class="tile link-tile btn btn-block" href="#" title="delete the work type">Delete selected Work Type</a>
+                        <a class="tile link-tile btn btn-block" href="#" title="delete the work type"><i class="fa fa-minus-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Delete selected Work Type</a>
                     </div>
                 </div>
                 <div class="row margin-box">

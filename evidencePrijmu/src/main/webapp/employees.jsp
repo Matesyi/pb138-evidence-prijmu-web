@@ -26,13 +26,13 @@
             <div class="body-section">
                 <div class="row">
                     <div class="col-md-4">
-                        <a class="tile link-tile btn btn-block" href="employee.jsp" title="add new employee">Add new Employee</a>
+                        <a class="tile link-tile btn btn-block" href="employee.jsp" title="add new employee"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add new Employee</a>
                     </div>
                     <div class="col-md-4">
-                        <a class="tile link-tile btn btn-block" onclick="editSelectedEmployee('#employees-table')" title="edit the employee">Edit selected Employee</a>
+                        <a class="tile link-tile btn btn-block" onclick="editSelectedEmployee('#employees-table')" title="edit the employee"><i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Edit selected Employee</a>
                     </div>
                     <div class="col-md-4">
-                        <a class="tile link-tile btn btn-block" href="#" title="delete the employee">Delete selected Employee</a>
+                        <a class="tile link-tile btn btn-block" href="#" title="delete the employee"><i class="fa fa-minus-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Delete selected Employee</a>
                     </div>
                 </div>
                 <div class="row margin-box">

@@ -47,10 +47,10 @@
                     </div>
                     <div class="row margin-box">
                         <div class="col-md-4 col-md-offset-2">
-                            <input type="submit" class="tile link-tile btn btn-block" value="SAVE" />
+                            <button type="submit" class="tile link-tile btn btn-block" ><i class='fa fa-floppy-o' aria-hidden='true'></i>&nbsp;&nbsp;&nbsp;SAVE</button>
                         </div>
                         <div class="col-md-4">
-                            <a href="employees.jsp" class="tile link-tile btn btn-block" >BACK</a>
+                            <a href="employees.jsp" class="tile link-tile btn btn-block" ><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;BACK</a>
                         </div>
                     </div>
                 </form>
