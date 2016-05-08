@@ -7,16 +7,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="vendor/bootstrap/bootstrap.min.js"></script>
-
-<script>
-$(document).mouseup(function (e)
-{
-    var container = $("#actualityScreen");
-
-    if (!container.is(e.target) // if the target of the click isn't the container...
-        && container.has(e.target).length === 0 && container.is(":visible")) // ... nor a descendant of the container
-    {
-        document.getElementById("cancel-button").click();
-    }
-});
-</script>
+<!--jQuery-->
+<script src="vendor/jquery/jquery-2.2.3.min.js"></script>
+<!--Simple data grid-->
+<script src="vendor/simple-data-grid-master/simple.datagrid.js"></script>

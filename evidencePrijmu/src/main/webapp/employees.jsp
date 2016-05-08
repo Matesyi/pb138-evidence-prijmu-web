@@ -14,7 +14,7 @@
     </head>
     <body>
         <%@include  file="components/navigation.html" %>
-        
+
         <div class="container">
             <div class="row body-section">
                 <div class="col-md-12">
@@ -25,22 +25,76 @@
             </div>
             <div class="body-section">
                 <div class="row">
-                    <div class="col-md-12">
-                        <p>
-                            Franzen twee food truck fingerstache raw denim, put a bird on it helvetica 8-bit tacos art party umami swag post-ironic biodiesel DIY. Hashtag mixtape meh schlitz try-hard aesthetic. Microdosing celiac before they sold out, literally flannel migas schlitz quinoa messenger bag food truck banh mi. Forage wolf kogi deep v leggings, cornhole street art chartreuse fashion axe. Meggings keytar banh mi brunch. Chambray franzen wolf, 8-bit ramps pop-up mlkshk pork belly man bun neutra whatever selvage VHS. Scenester chartreuse skateboard, keffiyeh hammock dreamcatcher chillwave farm-to-table four dollar toast affogato lumbersexual kinfolk gluten-free church-key sustainable.
-                        </p>
-                        <p>
-                            Bushwick small batch tote bag selfies, kitsch organic cardigan banjo craft beer before they sold out squid. Small batch franzen wayfarers meggings, poutine celiac leggings. Tofu put a bird on it venmo synth. Readymade kale chips green juice XOXO crucifix. Raw denim letterpress pork belly, sartorial food truck wayfarers semiotics thundercats neutra DIY schlitz gluten-free tacos asymmetrical. Four dollar toast pinterest narwhal locavore. Small batch cardigan vinyl, tumblr venmo tacos everyday carry typewriter man braid vice.
-                        </p>
-                    </div>
-                    <div class="col-md-4 col-md-offset-4">
+                    <div class="col-md-4">
                         <a class="tile link-tile btn btn-block" href="employee.jsp" title="add new employee">Add new Employee</a>
                     </div>
+                    <div class="col-md-4">
+                        <a class="tile link-tile btn btn-block" href="employee.jsp" title="add new employee">Edit selected Employee</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="tile link-tile btn btn-block" href="employee.jsp" title="add new employee">Delete selected Employee</a>
+                    </div>
                 </div>
-
+                <div class="row margin-box">
+                    <div class="col-md-8 col-md-offset-2">
+                        <table id="employees-table" width="100%">
+                            <thead>
+                                <tr>
+                                    <th style="width:20%">Personal number</th>
+                                    <th style="width:40%">Name</th>
+                                    <th style="width:40%">Surname</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
 
         <%@include  file="components/footer.html" %>
+        
+        <script>
+            var employeesData = [
+                {
+                    "personal_number": 15,
+                    "name": "Tester",
+                    "surname": "Testovaci"
+                },
+                {
+                    "personal_number": 186,
+                    "name": "John",
+                    "surname": "Placeholder"
+                },
+                {
+                    "personal_number": 56,
+                    "name": "Peter",
+                    "surname": "Parker"
+                },
+                {
+                    "personal_number": 11,
+                    "name": "Place",
+                    "surname": "Holder"
+                },
+                {
+                    "personal_number": 9586,
+                    "name": "Sky",
+                    "surname": "Scraper"
+                }
+            ];
+            
+            function generate_footer($footer, datagrid, data) {
+                $footer.append(
+                    "<tr style='text-align: center'><td colspan='3'>my footer for this table</td></tr>"
+                );
+            };
+
+            $('#employees-table').simple_datagrid(
+                {
+                    order_by: true,
+                    data: employeesData,
+                    on_generate_footer: generate_footer
+                }
+            );
+        </script>
     </body>
 </html>
