@@ -11,10 +11,15 @@
         <%@include  file="components/header.html" %>
         <title>Worksheet | Income Recording Application</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            .ui-datepicker-calendar {
+                display: none;
+            }
+        </style>
     </head>
     <body>
         <%@include  file="components/navigation.html" %>
-        
+
         <div class="container">
             <div class="row body-section">
                 <div class="col-md-12">
@@ -24,20 +29,178 @@
                 </div>
             </div>
             <div class="body-section">
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>
-                            Franzen twee food truck fingerstache raw denim, put a bird on it helvetica 8-bit tacos art party umami swag post-ironic biodiesel DIY. Hashtag mixtape meh schlitz try-hard aesthetic. Microdosing celiac before they sold out, literally flannel migas schlitz quinoa messenger bag food truck banh mi. Forage wolf kogi deep v leggings, cornhole street art chartreuse fashion axe. Meggings keytar banh mi brunch. Chambray franzen wolf, 8-bit ramps pop-up mlkshk pork belly man bun neutra whatever selvage VHS. Scenester chartreuse skateboard, keffiyeh hammock dreamcatcher chillwave farm-to-table four dollar toast affogato lumbersexual kinfolk gluten-free church-key sustainable.
-                        </p>
-                        <p>
-                            Bushwick small batch tote bag selfies, kitsch organic cardigan banjo craft beer before they sold out squid. Small batch franzen wayfarers meggings, poutine celiac leggings. Tofu put a bird on it venmo synth. Readymade kale chips green juice XOXO crucifix. Raw denim letterpress pork belly, sartorial food truck wayfarers semiotics thundercats neutra DIY schlitz gluten-free tacos asymmetrical. Four dollar toast pinterest narwhal locavore. Small batch cardigan vinyl, tumblr venmo tacos everyday carry typewriter man braid vice.
-                        </p>
+                <form action="" method="post">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <label class="input-label">
+                                <h4>Employee</h4>
+                                <select name='employee' id='employee-select' class='form-control'> 
+                                    <option value="" disabled selected>--- Select the employee ---</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="col-md-6 col-md-offset-3">
+                            <label class="input-label">
+                                <label class="input-label">
+                                    <h4>Date</h4>
+                                    <input name="startDate" id="startDate" class="date-picker form-control" />
+                                </label>
+                            </label>
+                        </div>
                     </div>
-                </div>
-
+                    <div class="row devider" ></div>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-2"> 
+                            <h4>Works to record:</h4>
+                        </div>
+                        <div id="work-holder" class="col-md-12">
+                            <div id="work-1" class="row">
+                                <div class="col-xs-6 col-md-4 col-md-offset-2">
+                                    <select id='work-type-1' name='work-type-1' class='form-control'> 
+                                        <option value="" disabled selected>--- Select the work type ---</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-6 col-md-4">
+                                    <input type="text" name="work-amount-1" class="form-control" placeholder="amount of working hours" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row margin-box">
+                        <div class="col-md-4 col-md-offset-2">
+                            <a class="tile link-tile btn btn-block" onclick="addWorkRow()" ><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add next work row</a>
+                        </div>
+                        <div class="col-md-4">
+                            <a class="tile link-tile btn btn-block" onclick="deleteWorkRow()" ><i class="fa fa-minus-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Delete last work row</a>
+                        </div>
+                    </div>
+                    <div class="row devider" ></div>
+                    <div class="row margin-box">
+                        <div class="col-md-4 col-md-offset-2">
+                            <button type="submit" class="tile link-tile btn btn-block" ><i class='fa fa-floppy-o' aria-hidden='true'></i>&nbsp;&nbsp;&nbsp;SAVE</button>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="index.jsp" class="tile link-tile btn btn-block" ><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;BACK</a>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
 
         <%@include  file="components/footer.html" %>
+        <script>
+            var workTypesData = [
+                {
+                    "work_type": "Coding",
+                    "price": 200
+                },
+                {
+                    "work_type": "Programming",
+                    "price": 300
+                },
+                {
+                    "work_type": "Testing",
+                    "price": 150
+                },
+                {
+                    "work_type": "Coffee breaking",
+                    "price": -40
+                },
+                {
+                    "work_type": "Creating documentation",
+                    "price": 150
+                }
+            ];
+            var employeesData = [
+                {
+                    "personal_number": 15,
+                    "name": "Tester",
+                    "surname": "Testovaci"
+                },
+                {
+                    "personal_number": 186,
+                    "name": "John",
+                    "surname": "Placeholder"
+                },
+                {
+                    "personal_number": 56,
+                    "name": "Peter",
+                    "surname": "Parker"
+                },
+                {
+                    "personal_number": 11,
+                    "name": "Place",
+                    "surname": "Holder"
+                },
+                {
+                    "personal_number": 9586,
+                    "name": "Sky",
+                    "surname": "Scraper"
+                }
+            ];
+            var numberOfWorkRows = 1;
+            
+            //fill first select box
+            fillWorkTypeSlectBox(1);
+
+            //select box for employees
+            $.each(employeesData, function (index, value) {
+                $('#employee-select')
+                        .append($("<option></option>")
+                                .attr("value", value.name + " " + value.surname + " (" + value.personal_number + ")")
+                                .text(value.name + " " + value.surname + " (" + value.personal_number + ")"));
+            });
+
+            //function for filling the work select box
+            function fillWorkTypeSlectBox(id) {
+                //select box for employees
+                $.each(workTypesData, function (index, value) {
+                    $('#work-type-' + id)
+                            .append($("<option></option>")
+                                    .attr("value", value.work_type + " (price: " + value.price + ")")
+                                    .text(value.work_type + " (price: " + value.price + ")"));
+                });
+            }
+
+            //function for adding work row
+            function addWorkRow() {
+                numberOfWorkRows++;
+                $("#work-holder")
+                        .append($("<div id='work-" + numberOfWorkRows + "' class='row'>\n\
+                                        <div class='col-xs-6 col-md-4 col-md-offset-2'>\n\
+                                            <select id='work-type-" + numberOfWorkRows + "' name='work-type-" + numberOfWorkRows + "' class='form-control'>\n\
+                                                <option value='' disabled selected>--- Select the work type ---</option>\n\
+                                            </select>\n\
+                                        </div>\n\
+                                        <div class='col-xs-6 col-md-4'>\n\
+                                            <input type='text' name='work-amount-" + numberOfWorkRows + "' class='form-control' placeholder='amount of working hours' />\n\
+                                        </div>\n\
+                                    </div>"));
+                //fill added select box
+                fillWorkTypeSlectBox(numberOfWorkRows);
+            }
+
+            //function for adding work row
+            function deleteWorkRow() {
+                if (numberOfWorkRows === 1) {
+                    return;
+                }
+                $("#work-" + numberOfWorkRows).remove();
+                numberOfWorkRows--;
+            }
+
+            //date picker options
+            $(function () {
+                $('.date-picker').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    showButtonPanel: true,
+                    dateFormat: 'MM yy',
+                    onClose: function (dateText, inst) {
+                        $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
