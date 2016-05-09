@@ -12,7 +12,7 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jettyVersion>9.0.2.v20130417</jettyVersion>
+        <jetty-version>9.3.7.v20160115</jetty-version>
     </properties>
     
     <dependencies>
@@ -24,13 +24,35 @@
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-server</artifactId>
-            <version>${jettyVersion}</version>
+            <artifactId>jetty-annotations</artifactId>
+            <version>${jetty-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <version>${jetty-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>apache-jsp</artifactId>
+            <version>${jetty-version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>apache-jstl</artifactId>
+            <version>${jetty-version}</version>
+            <type>pom</type>
         </dependency>
 
     </dependencies>
@@ -51,33 +73,33 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.3</version>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
                 <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <useManifestOnlyJar>false</useManifestOnlyJar>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.6</version>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>1.1.1</version>
                 <executions>
                     <execution>
-                        <phase>validate</phase>
+                        <id>enforce-java</id>
                         <goals>
-                            <goal>copy</goal>
+                            <goal>enforce</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${endorsed.dir}</outputDirectory>
-                            <silent>true</silent>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>javax</groupId>
-                                    <artifactId>javaee-endorsed-api</artifactId>
-                                    <version>7.0</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                            </artifactItems>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>[3.0.0,)</version>
+                                </requireMavenVersion>
+                                <requireJavaVersion>
+                                    <version>[1.8,)</version>
+                                    <message>[ERROR] OLD JDK [${java.version}] in use.
+                                        Jetty ${jetty-version} requires JDK 1.8 or newer</message>
+                                </requireJavaVersion>
+                            </rules>
                         </configuration>
                     </execution>
                 </executions>
@@ -85,15 +107,18 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.1</version>
-                <executions>
-                    <execution><goals><goal>java</goal></goals></execution>
-                </executions>
+                <version>1.2</version>
                 <configuration>
-                    <mainClass>main.java.JettyHandler</mainClass>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>-Dorg.eclipse.jetty.webapp.LEVEL=DEBUG</argument>
+                        <argument>-cp</argument>
+                        <classpath />
+                        <argument>org.eclipse.jetty.demo.Main</argument>
+                        <argument>8080</argument>
+                    </arguments>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
