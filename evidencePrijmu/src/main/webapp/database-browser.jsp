@@ -19,25 +19,132 @@
             <div class="row body-section">
                 <div class="col-md-12">
                     <h1>
-                        Database Browser
+                        Invoices Browser
                     </h1>
                 </div>
             </div>
             <div class="body-section">
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>
-                            Franzen twee food truck fingerstache raw denim, put a bird on it helvetica 8-bit tacos art party umami swag post-ironic biodiesel DIY. Hashtag mixtape meh schlitz try-hard aesthetic. Microdosing celiac before they sold out, literally flannel migas schlitz quinoa messenger bag food truck banh mi. Forage wolf kogi deep v leggings, cornhole street art chartreuse fashion axe. Meggings keytar banh mi brunch. Chambray franzen wolf, 8-bit ramps pop-up mlkshk pork belly man bun neutra whatever selvage VHS. Scenester chartreuse skateboard, keffiyeh hammock dreamcatcher chillwave farm-to-table four dollar toast affogato lumbersexual kinfolk gluten-free church-key sustainable.
-                        </p>
-                        <p>
-                            Bushwick small batch tote bag selfies, kitsch organic cardigan banjo craft beer before they sold out squid. Small batch franzen wayfarers meggings, poutine celiac leggings. Tofu put a bird on it venmo synth. Readymade kale chips green juice XOXO crucifix. Raw denim letterpress pork belly, sartorial food truck wayfarers semiotics thundercats neutra DIY schlitz gluten-free tacos asymmetrical. Four dollar toast pinterest narwhal locavore. Small batch cardigan vinyl, tumblr venmo tacos everyday carry typewriter man braid vice.
-                        </p>
+                <h3 class="text-left">Filters:</h3>
+                <form action="" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="input-label">
+                                <h4>Employee - personal number</h4>
+                                <input type="text" name="personal_number" class="form-control" />
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="input-label">
+                                <h4>Employee - surname</h4>
+                                <input type="text" name="surname" class="form-control" />
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="input-label">
+                                <h4>Date from</h4>
+                                <input name="date_from" id="dateFrom" class="date-picker form-control" />
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="input-label">
+                                <h4>Date to</h4>
+                                <input name="date_to" id="dateTo" class="date-picker form-control" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row margin-box">
+                        <div class="col-md-6 col-md-offset-3">
+                            <button type="submit" class="tile link-tile btn btn-block" ><i class='fa fa-filter' aria-hidden='true'></i>&nbsp;&nbsp;&nbsp;FILTER</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="row margin-box">
+                    <div class="col-md-10 col-md-offset-1">
+                        <table id="invoice-table" width="100%">
+                            <col width="34%">
+                            <col width="33%">
+                            <col width="33%">
+                            <thead>
+                                <tr>
+                                    <th>Employee</th>
+                                    <th>Date</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-1">
+                        <p id="price-sum" class="lead"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <a class="tile link-tile btn btn-block" onClick="window.print()" title="generate output from showed invoices"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Export/print the page</a>
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                        <a class="tile link-tile btn btn-block" onClick="" title="generate output from showed invoices"><i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Generate output from showed invoices</a>
+                    </div>
+                </div>
             </div>
         </div>
 
         <%@include  file="components/footer.html" %>
+
+        <script>
+            var invoiceData = [
+                {
+                    "employee": "11, Place Holder",
+                    "date": "May 2016",
+                    "price": "2500"
+                },
+                {
+                    "employee": "130, John Tester",
+                    "date": "May 2016",
+                    "price": "4302"
+                },
+                {
+                    "employee": "11, Place Holder",
+                    "date": "June 2016",
+                    "price": "3207"
+                },
+                {
+                    "employee": "11, Place Holder",
+                    "date": "July 2016",
+                    "price": "3012"
+                },
+                {
+                    "employee": "130, John Tester",
+                    "date": "July 2016",
+                    "price": "1240"
+                },
+                {
+                    "employee": "40, Papa Mamma",
+                    "date": "July 2016",
+                    "price": "5023"
+                },
+                {
+                    "employee": "11, Place Holder",
+                    "date": "August 2016",
+                    "price": "3210"
+                }
+            ];
+
+            $('#invoice-table').simple_datagrid(
+                    {
+                        order_by: false,
+                        data: invoiceData
+                    }
+            );
+
+            //final sum counting and displaying
+            var priceSum = 0;
+            $.each(invoiceData, function (index, value) {
+                priceSum += parseInt(value.price);
+            });
+            $('#price-sum').html('Total price summary: ' + priceSum);
+        </script>
+
     </body>
 </html>

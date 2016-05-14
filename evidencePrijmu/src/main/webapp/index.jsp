@@ -24,7 +24,7 @@
             <div class="body-section spaced-section indented">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
-                        <a class="tile link-tile btn btn-block" href="database-browser.jsp" title="database browser"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Database Browser</a>
+                        <a class="tile link-tile btn btn-block" href="database-browser.jsp" title="invoices browser"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Invoices Browser</a>
                     </div>
                 </div>
                 <div class="row">

@@ -11,11 +11,6 @@
         <%@include  file="components/header.html" %>
         <title>Worksheet | Income Recording Application</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <style>
-            .ui-datepicker-calendar {
-                display: none;
-            }
-        </style>
     </head>
     <body>
         <%@include  file="components/navigation.html" %>
@@ -188,19 +183,6 @@
                 $("#work-" + numberOfWorkRows).remove();
                 numberOfWorkRows--;
             }
-
-            //date picker options
-            $(function () {
-                $('.date-picker').datepicker({
-                    changeMonth: true,
-                    changeYear: true,
-                    showButtonPanel: true,
-                    dateFormat: 'MM yy',
-                    onClose: function (dateText, inst) {
-                        $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
-                    }
-                });
-            });
         </script>
     </body>
 </html>
