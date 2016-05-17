@@ -1,0 +1,54 @@
+work-type.jsp
+IN method POST - work_type, price
+
+OUT method POST !!!onDelete!!! - work_type 
+------------------------------------------------------------------------------------------------------------------
+work-types.jsp
+OUT format JSON - 
+[
+  {work_type: "programming", price: 400},
+  {work_type: "coding", price: 200},
+  {work_type: "testing", price: 150}
+]
+------------------------------------------------------------------------------------------------------------------
+employee.jsp
+IN method POST - personal_number, name, surname, address, post_code, city
+
+OUT method POST !!!onDelete!!! - personal_number
+------------------------------------------------------------------------------------------------------------------
+employees.jsp
+OUT format JSON - (only ACTIVE employees)
+[
+  {personal_number: 1, name: "John", surname: "Tester", address:"Testing 5", post_code: 12345, city: "Brno"},
+  {personal_number: 2, name: "John", surname: "Plceholder", address:"Testing 6", post_code: 12345, city: "Brno"},
+  {personal_number: 3, name: "Place", surname: "Holder", address:"Testing 7", post_code: 12345, city: "Brno"}
+]
+------------------------------------------------------------------------------------------------------------------
+worksheet.jsp
+OUT format JSON -
+[
+  {personal_number: 1, name: "John", surname: "Tester", address:"Testing 5", post_code: 12345, city: "Brno"},
+  {personal_number: 2, name: "John", surname: "Plceholder", address:"Testing 6", post_code: 12345, city: "Brno"},
+  {personal_number: 3, name: "Place", surname: "Holder", address:"Testing 7", post_code: 12345, city: "Brno"}
+]
+[
+  {work_type: "programming", price: 400},
+  {work_type: "coding", price: 200},
+  {work_type: "testing", price: 150}
+]
+IN method POST - employee, date, work_type-1, work_amount-1, work_type-2, work_amount-2
+------------------------------------------------------------------------------------------------------------------
+database-browser.jsp
+OUT format JSON - (ACTIVE and NON-ACTIVE employees)
+[
+  {personal_number: 1, name: "John", surname: "Tester", address:"Testing 5", post_code: 12345, city: "Brno"},
+  {personal_number: 2, name: "John", surname: "Plceholder", address:"Testing 6", post_code: 12345, city: "Brno"},
+  {personal_number: 3, name: "Place", surname: "Holder", address:"Testing 7", post_code: 12345, city: "Brno"}
+]
+[
+  {employee: "11, John Tester", date: "2016/03", price: 3025},
+  {employee: "11, John Tester", date: "2016/04", price: 871},
+  {employee: "37, Place Holder", date: "2016/03", price: 4231},
+  {employee: "11, John Tester", date: "2016/06", price: 2344}
+]
+IN - personal_number, surname, date_from, date_to
