@@ -62,6 +62,15 @@
                         </div>
                     </div>
                 </form>
+                <div class="devider"></div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <h3 class="text-left" style="margin: 0;">Result:</h3>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="tile link-tile btn btn-block" onclick="detailOfSelectedInvoice('#invoice-table')" title="detail of selected invoice"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Detail of selected invoice</a>
+                    </div>
+                </div>
                 <div class="row margin-box">
                     <div class="col-md-10 col-md-offset-1">
                         <table id="invoice-table" width="100%">
@@ -83,6 +92,7 @@
                         <p id="price-sum" class="lead"></p>
                     </div>
                 </div>
+                <div class="devider"></div>
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
                         <a class="tile link-tile btn btn-block" onClick="window.print()" title="generate output from showed invoices"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Export/print the page</a>
@@ -187,6 +197,13 @@
                 priceSum += parseInt(value.price);
             });
             $('#price-sum').html('Total price summary: ' + priceSum);
+            
+            function detailOfSelectedInvoice(target) {
+                var row = $(target).simple_datagrid('getSelectedRow');
+                if (typeof row !== 'undefined' && row !== null) {
+                    $.redirect('invoice-detail.jsp', {}, 'GET');
+                }
+            };
         </script>
 
     </body>

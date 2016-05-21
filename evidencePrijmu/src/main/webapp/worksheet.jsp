@@ -110,27 +110,42 @@
                 {
                     "personal_number": 15,
                     "name": "Tester",
-                    "surname": "Testovaci"
+                    "surname": "Testovaci",
+                    "address": "Test 1",
+                    "city": "Brno",
+                    "post_code": "60200"
                 },
                 {
                     "personal_number": 186,
                     "name": "John",
-                    "surname": "Placeholder"
+                    "surname": "Placeholder",
+                    "address": "Test 1",
+                    "city": "Brno",
+                    "post_code": "60200"
                 },
                 {
                     "personal_number": 56,
                     "name": "Peter",
-                    "surname": "Parker"
+                    "surname": "Parker",
+                    "address": "Test 1",
+                    "city": "Brno",
+                    "post_code": "60200"
                 },
                 {
                     "personal_number": 11,
                     "name": "Place",
-                    "surname": "Holder"
+                    "surname": "Holder",
+                    "address": "Test 1",
+                    "city": "Brno",
+                    "post_code": "60200"
                 },
                 {
                     "personal_number": 9586,
                     "name": "Sky",
-                    "surname": "Scraper"
+                    "surname": "Scraper",
+                    "address": "Test 1",
+                    "city": "Brno",
+                    "post_code": "60200"
                 }
             ];
             var numberOfWorkRows = 1;
