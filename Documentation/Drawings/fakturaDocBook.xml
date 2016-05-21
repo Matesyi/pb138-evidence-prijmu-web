@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article version="5.0" xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <info>
+    <title ID="Faktura_301684">Invoice <date>06-2016</date>
+    #<guilabel>306948</guilabel></title>
+  </info>
+
+  <section>
+    <title>Employee</title>
+
+    <address>
+        <personname>Peter Parker </personname> <email>spidey@marvel.com</email>
+        <street>987 Corway Blvd.</street>
+        <city>Los Angeles</city>
+        <postcode>90210</postcode>
+        <state>United States</state>
+    </address>
+  </section>
+  
+  <section>
+    <title>Company</title>
+    <address>
+        Gamma Realty inc.
+        <street>1653 Waldeck Street</street>
+        <city>Arlington</city>
+        <postcode>76010</postcode>
+        <state>TX, United States</state>
+    </address>
+  </section>
+
+  <section>
+    <title>Works on record:</title>
+
+    <informaltable>
+      <tgroup cols="4">
+        <thead>
+          <row>
+            <entry align="center">Job Type</entry>
+
+            <entry align="center">Hour cost</entry>
+
+            <entry align="center">Working hours</entry>
+
+            <entry align="center">SubTotal</entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry>Programming</entry>
+
+            <entry>300</entry>
+
+            <entry>5</entry>
+
+            <entry>1500,00 €</entry>
+          </row>
+
+          <row>
+            <entry>Coding</entry>
+
+            <entry>200</entry>
+
+            <entry>3</entry>
+
+            <entry>600,00 €</entry>
+          </row>
+
+          <row>
+            <entry>Creating Documentation</entry>
+
+            <entry>150</entry>
+
+            <entry>1</entry>
+
+            <entry>150,00 €</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </section>
+  <section>
+    <title>Total Balance:</title>
+
+    <informaltable>
+      <tgroup cols="2">
+        <colspec align="center"/>
+        <tbody>
+          <row>
+            <entry>SubTotal All works</entry>
+
+            <entry>2250,00 €</entry>
+          </row>
+
+          <row>
+            <entry>Tax Rate 20%</entry>
+
+            <entry>450 €</entry>
+          </row>
+
+          <row>
+            <entry>Total Balance</entry>
+
+            <entry>2700,00 €</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+
+  </section>
+</article>
