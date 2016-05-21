@@ -30,13 +30,17 @@
                         <div class="col-md-6">
                             <label class="input-label">
                                 <h4>Employee - personal number</h4>
-                                <input type="text" name="personal_number" class="form-control" />
+                                <select name='employee' id='personal_number-select' class='form-control'> 
+                                    <option value="" disabled selected>--- Filter by personal number ---</option>
+                                </select>
                             </label>
                         </div>
                         <div class="col-md-6">
                             <label class="input-label">
                                 <h4>Employee - surname</h4>
-                                <input type="text" name="surname" class="form-control" />
+                                <select name='employee' id='surname-select' class='form-control'> 
+                                    <option value="" disabled selected>--- Filter by surname ---</option>
+                                </select>
                             </label>
                         </div>
                         <div class="col-md-6">
@@ -93,6 +97,33 @@
         <%@include  file="components/footer.html" %>
 
         <script>
+            var employeesData = [
+                {
+                    "personal_number": 15,
+                    "name": "Tester",
+                    "surname": "Testovaci"
+                },
+                {
+                    "personal_number": 186,
+                    "name": "John",
+                    "surname": "Placeholder"
+                },
+                {
+                    "personal_number": 56,
+                    "name": "Peter",
+                    "surname": "Parker"
+                },
+                {
+                    "personal_number": 11,
+                    "name": "Place",
+                    "surname": "Holder"
+                },
+                {
+                    "personal_number": 9586,
+                    "name": "Sky",
+                    "surname": "Scraper"
+                }
+            ];
             var invoiceData = [
                 {
                     "employee": "11, Place Holder",
@@ -130,6 +161,18 @@
                     "price": "3210"
                 }
             ];
+
+            //select box for employees
+            $.each(employeesData, function (index, value) {
+                $('#personal_number-select')
+                        .append($("<option></option>")
+                                .attr("value", value.personal_number)
+                                .text(value.personal_number + " - (" + value.name + " " + value.surname + ")"));
+                $('#surname-select')
+                        .append($("<option></option>")
+                                .attr("value", value.surname)
+                                .text(value.surname));
+            });
 
             $('#invoice-table').simple_datagrid(
                     {

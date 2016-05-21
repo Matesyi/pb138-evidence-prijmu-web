@@ -29,7 +29,7 @@
                         <div class="col-md-6 col-md-offset-3">
                             <label class="input-label">
                                 <h4>Personal number</h4>
-                                <input type="text" name="personal_number" class="form-control" />
+                                <input type="text" name="personal_number" class="form-control" readonly />
                             </label>
                         </div>
                         <div class="col-md-6 col-md-offset-3">
@@ -42,6 +42,24 @@
                             <label class="input-label">
                                 <h4>Surname</h4>
                                 <input type="text" name="surname" class="form-control" />
+                            </label>
+                        </div>
+                        <div class="col-md-6 col-md-offset-3">
+                            <label class="input-label">
+                                <h4>Address (street name & number)</h4>
+                                <input type="text" name="address" class="form-control" />
+                            </label>
+                        </div>
+                        <div class="col-md-3 col-md-offset-3">
+                            <label class="input-label">
+                                <h4>City</h4>
+                                <input type="text" name="city" class="form-control" />
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="input-label">
+                                <h4>Post Code</h4>
+                                <input type="text" name="post_code" class="form-control" />
                             </label>
                         </div>
                     </div>
@@ -66,6 +84,13 @@
                 $("input[name=personal_number]").val(parameters.personal_number);
                 $("input[name=name]").val(parameters.name);
                 $("input[name=surname]").val(parameters.surname);
+                $("input[name=address]").val(parameters.address);
+                $("input[name=city]").val(parameters.city);
+                $("input[name=post_code]").val(parameters.post_code);
+            }
+
+            if ($("input[name=personal_number]").val() === "") {
+                $("input[name=personal_number]").attr("placeholder", "Will be added automatically");
             }
         </script>
     </body>
