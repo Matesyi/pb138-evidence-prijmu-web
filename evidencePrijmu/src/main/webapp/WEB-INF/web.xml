@@ -25,7 +25,16 @@
     </servlet>
     
     <!-- Our own servlets -->
-    
+    <!--
+    <servlet>
+        <servlet-name>SaveEmployeeServlet</servlet-name>
+        <servlet-class>com.mycompany.myevidencia.servlets.SaveEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteEmployeeServlet</servlet-name>
+        <servlet-class>com.mycompany.myevidencia.servlets.DeleteEmployeeServlet</servlet-class>
+    </servlet>
+    -->
     
     <servlet-mapping>
         <servlet-name>jsp</servlet-name>
@@ -40,5 +49,10 @@
     </servlet-mapping>
     
     <!-- Mapping for our servlets -->
-    
+    <!--
+    <servlet-mapping>
+        <servlet-name>SaveEmployeeServlet</servlet-name>
+        <url-pattern>/saveEmployees</url-pattern>
+    </servlet-mapping>
+    -->
 </web-app>
