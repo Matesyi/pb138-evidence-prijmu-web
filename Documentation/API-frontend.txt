@@ -1,7 +1,6 @@
 work-type.jsp
 IN method POST - work_type, price
 
-OUT method POST !!!onDelete!!! - work_type 
 ------------------------------------------------------------------------------------------------------------------
 work-types.jsp
 OUT format JSON - 
@@ -10,11 +9,12 @@ OUT format JSON -
   {work_type: "coding", price: 200},
   {work_type: "testing", price: 150}
 ]
+
+IN method POST !!!onDelete!!! - work_type 
 ------------------------------------------------------------------------------------------------------------------
 employee.jsp
 IN method POST - personal_number, name, surname, address, post_code, city
 
-OUT method POST !!!onDelete!!! - personal_number
 ------------------------------------------------------------------------------------------------------------------
 employees.jsp
 OUT format JSON - (only ACTIVE employees)
@@ -23,6 +23,8 @@ OUT format JSON - (only ACTIVE employees)
   {personal_number: 2, name: "John", surname: "Plceholder", address:"Testing 6", post_code: 12345, city: "Brno"},
   {personal_number: 3, name: "Place", surname: "Holder", address:"Testing 7", post_code: 12345, city: "Brno"}
 ]
+
+IN method POST !!!onDelete!!! - personal_number
 ------------------------------------------------------------------------------------------------------------------
 worksheet.jsp
 OUT format JSON -
