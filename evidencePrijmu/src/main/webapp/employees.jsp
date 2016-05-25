@@ -37,7 +37,7 @@
                 </div>
                 <div class="row margin-box">
                     <div class="col-md-8 col-md-offset-2">
-                        <table id="employees-table" width="100%">
+                        <table personal_number="employees-table" width="100%">
                             <col width="26%">
                             <col width="37%">
                             <col width="37%">

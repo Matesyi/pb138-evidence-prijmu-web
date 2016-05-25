@@ -27,7 +27,7 @@ public class Test {
         Employee employee = new Employee();
         employee.setName("Unknown");
         employee.setSurname("Anonymus");
-        employee.setId(10);//choose some number according to database content
+        employee.setPersonal_number(10);//choose some number according to database content
         return employee;
     }
     
@@ -38,7 +38,7 @@ public class Test {
          employee.setAddress("Pěkná Ulice 4");
         employee.setPostCode(11002);
         employee.setCity("Brno");
-        employee.setId(3);//choose some number according to database content
+        employee.setPersonal_number(3);//choose some number according to database content
         return employee;
     }
     

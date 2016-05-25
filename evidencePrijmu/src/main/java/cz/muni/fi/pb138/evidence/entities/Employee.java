@@ -8,7 +8,7 @@ import java.util.Objects;
  */
 public class Employee {
     
-    private int id;
+    private int personal_number;
     private String name;
     private String surname;
     private String address;
@@ -48,12 +48,12 @@ public class Employee {
         this.city = city;
     }
 
-    public int getId() {
-        return id;
+    public int getPersonal_number() {
+        return personal_number;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPersonal_number(int personal_number) {
+        this.personal_number = personal_number;
     }
 
     public String getName() {
@@ -75,7 +75,7 @@ public class Employee {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 89 * hash + this.id;
+        hash = 89 * hash + this.personal_number;
         hash = 89 * hash + Objects.hashCode(this.name);
         hash = 89 * hash + Objects.hashCode(this.surname);
         return hash;
@@ -93,7 +93,7 @@ public class Employee {
             return false;
         }
         final Employee other = (Employee) obj;
-        if (this.id != other.id) {
+        if (this.personal_number != other.personal_number) {
             return false;
         }
         if (!Objects.equals(this.name, other.name)) {
@@ -107,7 +107,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" + "id=" + id + ", name=" + name + ", surname=" + surname + ", address=" + address + ", postCode=" + postCode + ", city=" + city + ", active=" + active + '}';
+        return "Employee{" + "personal_number=" + personal_number + ", name=" + name + ", surname=" + surname + ", address=" + address + ", postCode=" + postCode + ", city=" + city + ", active=" + active + '}';
     }
 
 }

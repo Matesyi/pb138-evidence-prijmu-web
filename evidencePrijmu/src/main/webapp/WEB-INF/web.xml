@@ -2,9 +2,10 @@
 
 
 <web-app
-    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-    xmlns='http://java.sun.com/xml/ns/javaee'
-    xsi:schemaLocation='http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd'>
+        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xmlns='http://java.sun.com/xml/ns/javaee'
+        xsi:schemaLocation='http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd'
+        version="2.5">
     <display-name>Income Recording Application</display-name>
     <servlet id="jsp">
         <servlet-name>jsp</servlet-name>
@@ -23,19 +24,22 @@
         </init-param>
         <load-on-startup>0</load-on-startup>
     </servlet>
-    
+
     <!-- Our own servlets -->
-    <!--
     <servlet>
         <servlet-name>SaveEmployeeServlet</servlet-name>
-        <servlet-class>com.mycompany.myevidencia.servlets.SaveEmployeeServlet</servlet-class>
+        <servlet-class>cz.muni.fi.pb138.evidence.servlet.SaveEmployeeServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DeleteEmployeeServlet</servlet-name>
-        <servlet-class>com.mycompany.myevidencia.servlets.DeleteEmployeeServlet</servlet-class>
+        <servlet-name>WorksheetServlet</servlet-name>
+        <servlet-class>cz.muni.fi.pb138.evidence.servlet.WorksheetServlet</servlet-class>
     </servlet>
-    -->
-    
+    <!--<servlet>-->
+    <!--<servlet-name>DeleteEmployeeServlet</servlet-name>-->
+    <!--<servlet-class>cz.muni.fi.pb138.evidence.servlet.DeleteEmployeeServlet</servlet-class>-->
+    <!--</servlet>-->
+
+
     <servlet-mapping>
         <servlet-name>jsp</servlet-name>
         <url-pattern>*.jsp</url-pattern>
@@ -47,12 +51,16 @@
         <url-pattern>*.JSPX</url-pattern>
         <url-pattern>*.XSP</url-pattern>
     </servlet-mapping>
-    
+
     <!-- Mapping for our servlets -->
-    <!--
+
     <servlet-mapping>
         <servlet-name>SaveEmployeeServlet</servlet-name>
         <url-pattern>/saveEmployees</url-pattern>
     </servlet-mapping>
-    -->
+    <servlet-mapping>
+        <servlet-name>WorksheetServlet</servlet-name>
+        <url-pattern>/worksheet</url-pattern>
+    </servlet-mapping>
+
 </web-app>

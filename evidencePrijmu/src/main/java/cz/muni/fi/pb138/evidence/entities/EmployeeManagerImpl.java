@@ -37,9 +37,9 @@ public class EmployeeManagerImpl implements EmployeeManager {
     //Stores new employee to xml database.
     @Override
     public void createEmployee(Employee employee) {
-        employee.setId(countID());
+        employee.setPersonal_number(countID());
         String query = "update insert <employee>\n"
-                + "<id>" + employee.getId() + "</id>\n"
+                + "<id>" + employee.getPersonal_number() + "</id>\n"
                 + "<name>" + employee.getName() + "</name>\n"
                 + "<surname>" + employee.getSurname() + "</surname>\n"
                 + "<address>" + employee.getAddress() + "</address>\n"
@@ -62,10 +62,10 @@ public class EmployeeManagerImpl implements EmployeeManager {
     //from values of object given in parameter.
     @Override
     public void updateEmployee(Employee employee) {
-        int employeeID = employee.getId();
+        int employeeID = employee.getPersonal_number();
         String query = "update replace /root/employees/employee[./id = \""
                 + employeeID + "\"] with <employee>\n"
-                + "<id>" + employee.getId() + "</id>\n"
+                + "<id>" + employee.getPersonal_number() + "</id>\n"
                 + "<name>" + employee.getName() + "</name>\n"
                 + "<surname>" + employee.getSurname() + "</surname>\n"
                 + "<address>" + employee.getAddress() + "</address>\n"
@@ -86,7 +86,7 @@ public class EmployeeManagerImpl implements EmployeeManager {
     //If employee with given id is not in database, it runs normally but nothing is deleted.
     @Override
     public void deleteEmployee(Employee employee) {
-        int employeeID = employee.getId();
+        int employeeID = employee.getPersonal_number();
         String query = "update delete /root/employees/employee[./id = \"" + employeeID + "\"]";
         Logger.getLogger(EmployeeManagerImpl.class.getName()).log(Level.INFO, query);
         try {
@@ -100,10 +100,10 @@ public class EmployeeManagerImpl implements EmployeeManager {
 
     @Override
     public void setEmployeeInactive(Employee employee) {
-        int employeeID = employee.getId();
+        int employeeID = employee.getPersonal_number();
         String query = "update replace /root/employees/employee[./id = \""
                 + employeeID + "\"] with <employee>\n"
-                + "<id>" + employee.getId() + "</id>\n"
+                + "<id>" + employee.getPersonal_number() + "</id>\n"
                 + "<name>" + employee.getName() + "</name>\n"
                 + "<surname>" + employee.getSurname() + "</surname>\n"
                 + "<address>" + employee.getAddress() + "</address>\n"
@@ -123,10 +123,10 @@ public class EmployeeManagerImpl implements EmployeeManager {
 
     @Override
     public void setEmployeeActive(Employee employee) {
-        int employeeID = employee.getId();
+        int employeeID = employee.getPersonal_number();
         String query = "update replace /root/employees/employee[./id = \""
                 + employeeID + "\"] with <employee>\n"
-                + "<id>" + employee.getId() + "</id>\n"
+                + "<id>" + employee.getPersonal_number() + "</id>\n"
                 + "<name>" + employee.getName() + "</name>\n"
                 + "<surname>" + employee.getSurname() + "</surname>\n"
                 + "<address>" + employee.getAddress() + "</address>\n"
@@ -209,7 +209,7 @@ List<Employee> result = new ArrayList<>();
     public Employee resultToEmployee(String result) {
         Employee employee = new Employee();
         String[] resultArray = result.split(";");
-        employee.setId(Integer.parseInt(resultArray[0]));
+        employee.setPersonal_number(Integer.parseInt(resultArray[0]));
         employee.setName(resultArray[1]);
         employee.setSurname(resultArray[2]);
         employee.setAddress(resultArray[3]);

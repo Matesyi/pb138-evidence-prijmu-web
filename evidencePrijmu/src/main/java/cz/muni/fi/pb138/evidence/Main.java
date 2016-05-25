@@ -17,7 +17,7 @@ public class Main
     {
         Main main = new Main();
         
-        int serverPort = 8080;        
+        int serverPort = 8090;
         main.startJetty(serverPort);
         
         if (Desktop.isDesktopSupported()) {
