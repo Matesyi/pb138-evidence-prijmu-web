@@ -1,66 +1,97 @@
-<%-- 
-    Document   : work-type
-    Created on : May 7, 2016, 4:56:53 PM
+<%--
+    Document   : work-types
+    Created on : May 7, 2016, 4:18:17 PM
     Author     : Matej Karolyi
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
-<head>
-    <%@include  file="components/header.html" %>
-    <title>Work Type | Income Recording Application</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-</head>
-<body>
-<%@include  file="components/navigation.html" %>
+    <head>
+        <%@include  file="components/header.html" %>
+        <title>Work Types | Income Recording Application</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <%@include  file="components/navigation.html" %>
 
-<div class="container">
-    <div class="row body-section">
-        <div class="col-md-12">
-            <h1>
-                Edit/Create a Work Type
-            </h1>
+        <div class="container">
+            <div class="row body-section">
+                <div class="col-md-12">
+                    <h1>
+                        List of Work Types
+                    </h1>
+                </div>
+            </div>
+            <div class="body-section">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a class="tile link-tile btn btn-block" href="work-type.jsp" title="add new work type"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add new Work Type</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="tile link-tile btn btn-block" onclick="editSelectedWorkType('#work-types-table')" title="edit the work type"><i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Edit selected Work Type</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="tile link-tile btn btn-block" href="#" title="delete the work type"><i class="fa fa-minus-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Delete selected Work Type</a>
+                    </div>
+                </div>
+                <div class="row margin-box">
+                    <div class="col-md-8 col-md-offset-2">
+                        <table id="work-types-table" width="100%">
+                            <col width="70%">
+                            <col width="30%">
+                            <thead>
+                                <tr>
+                                    <th>Work Type</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="body-section">
-        <form action="" method="post">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <label class="input-label">
-                        <h4>Work Type</h4>
-                        <input type="text" name="work_type" class="form-control" />
-                    </label>
-                </div>
-                <div class="col-md-6 col-md-offset-3">
-                    <label class="input-label">
-                        <h4>Price</h4>
-                        <input type="text" name="price" class="form-control" />
-                    </label>
-                </div>
-            </div>
-            <div class="row margin-box">
-                <div class="col-md-4 col-md-offset-2">
-                    <button type="submit" class="tile link-tile btn btn-block" ><i class='fa fa-floppy-o' aria-hidden='true'></i>&nbsp;&nbsp;&nbsp;SAVE</button>
-                </div>
-                <div class="col-md-4">
-                    <a href="work-types.jsp" class="tile link-tile btn btn-block" ><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;BACK</a>
-                </div>
 
-            </div>
-        </form>
-    </div>
-</div>
+        <%@include  file="components/footer.html" %>
 
-<%@include  file="components/footer.html" %>
+        <script>
+            var workTypesData = [
+                {
+                    "work_type": "Coding",
+                    "price": 200
+                },
+                {
+                    "work_type": "Programming",
+                    "price": 300
+                },
+                {
+                    "work_type": "Testing",
+                    "price": 150
+                },
+                {
+                    "work_type": "Coffee breaking",
+                    "price": -40
+                },
+                {
+                    "work_type": "Creating documentation",
+                    "price": 150
+                }
+            ];
 
-<script>
-    if (window.location.search !== "") {
-        var parameters = parseGetParameters(window.location.search);
+            $('#work-types-table').simple_datagrid(
+                    {
+                        order_by: false,
+                        data: workTypesData
+                    }
+            );
 
-        $("input[name=work_type]").val(parameters.work_type);
-        $("input[name=price]").val(parameters.price);
-    }
-</script>
-</body>
+            function editSelectedWorkType(target) {
+                var row = $(target).simple_datagrid('getSelectedRow');
+                if (typeof row !== 'undefined' && row !== null) {
+                    $.redirect('work-type.jsp', {work_type: row.work_type, price: row.price}, 'GET');
+                }
+            }
+            ;
+        </script>
+    </body>
 </html>
