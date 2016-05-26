@@ -32,7 +32,7 @@
                         <a class="tile link-tile btn btn-block" onclick="editSelectedEmployee('#employees-table')" title="edit the employee"><i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Edit selected Employee</a>
                     </div>
                     <div class="col-md-4">
-                        <a class="tile link-tile btn btn-block" href="#" title="delete the employee"><i class="fa fa-minus-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Delete selected Employee</a>
+                        <a class="tile link-tile btn btn-block" href="#" title="delete the employee" id="deleteButton"><i class="fa fa-minus-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Delete selected Employee</a>
                     </div>
                 </div>
                 <div class="row margin-box">
@@ -65,13 +65,18 @@
                         data: employeesData
                     }
             );
-    
+
             function editSelectedEmployee(target) {
                 var row = $(target).simple_datagrid('getSelectedRow');
                 if (typeof row !== 'undefined' && row !== null) {
                     $.redirect('employee', {personal_number: row.personal_number, name: row.name, surname: row.surname, address: row.address, city: row.city, post_code: row.post_code}, 'GET');
                 }
             };
+            $("tr").click(function() {
+                var toDeleteId = $(this).children(":first").text()
+                if(!isNaN(toDeleteId))
+                    $("#deleteButton").attr("href", "employee/delete/" + toDeleteId);
+            });
         </script>
     </body>
 </html>

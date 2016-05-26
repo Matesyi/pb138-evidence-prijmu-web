@@ -27,10 +27,6 @@
 
     <!-- Our own servlets -->
     <servlet>
-        <servlet-name>SaveEmployeeServlet</servlet-name>
-        <servlet-class>cz.muni.fi.pb138.evidence.servlet.SaveEmployeeServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>WorksheetServlet</servlet-name>
         <servlet-class>cz.muni.fi.pb138.evidence.servlet.WorksheetServlet</servlet-class>
     </servlet>
@@ -56,10 +52,6 @@
     <!-- Mapping for our servlets -->
 
     <servlet-mapping>
-        <servlet-name>SaveEmployeeServlet</servlet-name>
-        <url-pattern>/saveEmployees</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>WorksheetServlet</servlet-name>
         <url-pattern>/worksheet</url-pattern>
     </servlet-mapping>
@@ -74,5 +66,9 @@
     <servlet-mapping>
         <servlet-name>EmployeesServlet</servlet-name>
         <url-pattern>/employee/create</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeesServlet</servlet-name>
+        <url-pattern>/employee/delete/*</url-pattern>
     </servlet-mapping>
 </web-app>
