@@ -26,7 +26,7 @@
             <div class="body-section">
                 <div class="row">
                     <div class="col-md-4">
-                        <a class="tile link-tile btn btn-block" href="work-type.jsp" title="add new work type"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add new Work Type</a>
+                        <a class="tile link-tile btn btn-block" href="work-type" title="add new work type"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add new Work Type</a>
                     </div>
                     <div class="col-md-4">
                         <a class="tile link-tile btn btn-block" onclick="editSelectedWorkType('#work-types-table')" title="edit the work type"><i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Edit selected Work Type</a>
@@ -88,7 +88,7 @@
             function editSelectedWorkType(target) {
                 var row = $(target).simple_datagrid('getSelectedRow');
                 if (typeof row !== 'undefined' && row !== null) {
-                    $.redirect('work-type.jsp', {work_type: row.work_type, price: row.price}, 'GET');
+                    $.redirect('work-type', {work_type: row.work_type, price: row.price}, 'GET');
                 }
             }
             ;

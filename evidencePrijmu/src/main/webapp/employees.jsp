@@ -26,7 +26,7 @@
             <div class="body-section">
                 <div class="row">
                     <div class="col-md-4">
-                        <a class="tile link-tile btn btn-block" href="employee.jsp" title="add new employee"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add new Employee</a>
+                        <a class="tile link-tile btn btn-block" href="employee" title="add new employee"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add new Employee</a>
                     </div>
                     <div class="col-md-4">
                         <a class="tile link-tile btn btn-block" onclick="editSelectedEmployee('#employees-table')" title="edit the employee"><i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Edit selected Employee</a>
@@ -69,7 +69,7 @@
             function editSelectedEmployee(target) {
                 var row = $(target).simple_datagrid('getSelectedRow');
                 if (typeof row !== 'undefined' && row !== null) {
-                    $.redirect('employee.jsp', {personal_number: row.personal_number, name: row.name, surname: row.surname, address: row.address, city: row.city, post_code: row.post_code}, 'GET');
+                    $.redirect('employee', {personal_number: row.personal_number, name: row.name, surname: row.surname, address: row.address, city: row.city, post_code: row.post_code}, 'GET');
                 }
             };
         </script>

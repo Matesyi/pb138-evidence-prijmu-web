@@ -201,7 +201,7 @@
     function detailOfSelectedInvoice(target) {
         var row = $(target).simple_datagrid('getSelectedRow');
         if (typeof row !== 'undefined' && row !== null) {
-            $.redirect('invoice-detail.jsp', {}, 'GET');
+            $.redirect('invoice-detail', {}, 'GET');
         }
     };
 </script>
