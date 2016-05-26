@@ -34,10 +34,11 @@
         <servlet-name>WorksheetServlet</servlet-name>
         <servlet-class>cz.muni.fi.pb138.evidence.servlet.WorksheetServlet</servlet-class>
     </servlet>
-    <!--<servlet>-->
-    <!--<servlet-name>DeleteEmployeeServlet</servlet-name>-->
-    <!--<servlet-class>cz.muni.fi.pb138.evidence.servlet.DeleteEmployeeServlet</servlet-class>-->
-    <!--</servlet>-->
+    <servlet>
+        <servlet-name>EmployeesServlet</servlet-name>
+        <servlet-class>cz.muni.fi.pb138.evidence.servlet.EmployeesServlet</servlet-class>
+    </servlet>
+
 
 
     <servlet-mapping>
@@ -62,5 +63,16 @@
         <servlet-name>WorksheetServlet</servlet-name>
         <url-pattern>/worksheet</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>EmployeesServlet</servlet-name>
+        <url-pattern>/employees</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeesServlet</servlet-name>
+        <url-pattern>/employee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeesServlet</servlet-name>
+        <url-pattern>/employee/create</url-pattern>
+    </servlet-mapping>
 </web-app>

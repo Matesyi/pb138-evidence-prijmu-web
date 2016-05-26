@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="body-section">
-                <form action="" method="post">
+                <form action="employee/create" method="post">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
                             <label class="input-label">
