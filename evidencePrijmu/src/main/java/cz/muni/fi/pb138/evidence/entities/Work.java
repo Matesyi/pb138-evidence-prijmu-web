@@ -8,30 +8,40 @@ import java.util.Objects;
  */
 public class Work {
 
-    private String type;
-    private String rate;
+    private int workID;
 
-    public String getType() {
-        return type;
+    public int getWorkID() {
+        return workID;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setWorkID(int workID) {
+        this.workID = workID;
+    }
+    private String work_type;
+    private int price;
+
+    public String getWork_type() {
+        return work_type;
     }
 
-    public String getRate() {
-        return rate;
+    public void setWork_type(String work_type) {
+        this.work_type = work_type;
     }
 
-    public void setRate(String rate) {
-        this.rate = rate;
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.type);
-        hash = 97 * hash + Objects.hashCode(this.rate);
+        int hash = 3;
+        hash = 53 * hash + this.workID;
+        hash = 53 * hash + Objects.hashCode(this.work_type);
+        hash = 53 * hash + this.price;
         return hash;
     }
 
@@ -47,15 +57,21 @@ public class Work {
             return false;
         }
         final Work other = (Work) obj;
-        if (!Objects.equals(this.type, other.type)) {
+        if (this.workID != other.workID) {
             return false;
         }
-        return Objects.equals(this.rate, other.rate);
+        if (this.price != other.price) {
+            return false;
+        }
+        if (!Objects.equals(this.work_type, other.work_type)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Work{" + "type=" + type + ", rate=" + rate + '}';
+        return "Work{" + "workID=" + workID + ", work_type=" + work_type + ", price=" + price + '}';
     }
 
 }

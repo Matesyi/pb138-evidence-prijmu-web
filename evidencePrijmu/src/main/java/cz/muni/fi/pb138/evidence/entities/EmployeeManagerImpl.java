@@ -177,7 +177,7 @@ public class EmployeeManagerImpl implements EmployeeManager {
         }
         String[] resultArray = resultStr.split(":");
         //Iteration from 1., not from 0. element (0. is empty String)
-        for (int i=1; i < resultArray.length ; i++) {
+        for (int i = 1; i < resultArray.length; i++) {
             result.add(resultToEmployee(resultArray[i]));
         }
 //        System.out.println(result);
@@ -186,7 +186,7 @@ public class EmployeeManagerImpl implements EmployeeManager {
 
     @Override
     public List<Employee> findInactiveEmplyees() {
-List<Employee> result = new ArrayList<>();
+        List<Employee> result = new ArrayList<>();
         String query = "for $p in /root/employees/employee where ($p/active) = \"false\""
                 + " return (\":\", data($p/id), \";\" , data($p/name), \";\""
                 + ", data($p/surname), \";\" ,data($p/address), \";\" ,"
@@ -200,11 +200,12 @@ List<Employee> result = new ArrayList<>();
         }
         String[] resultArray = resultStr.split(":");
         //Iteration from 1., not from 0. element (0. is empty String)
-        for (int i=1; i < resultArray.length ; i++) {
+        for (int i = 1; i < resultArray.length; i++) {
             result.add(resultToEmployee(resultArray[i]));
         }
 //        System.out.println(result);
-        return result;    }
+        return result;
+    }
 
     public Employee resultToEmployee(String result) {
         Employee employee = new Employee();
@@ -220,4 +221,3 @@ List<Employee> result = new ArrayList<>();
         return employee;
     }
 }
-
