@@ -26,15 +26,55 @@
             <div class="body-section">
                 <div class="row">
                     <div class="col-md-12">
+                        <h4>Features</h4>
+                        <ul>
+                            <li>Application allows creating, editing and removing Employees and Work Types</li>
+                            <li>Users can produce and store Working sheets using interactive forms</li>
+                            <li>Tool for automatic producing invoices is provided</li>
+                            <li>The working history is visible through integrated browser which is enhanced by set of filters</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="body-section">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Creating employees and work types</h4>
                         <p>
-                            Franzen twee food truck fingerstache raw denim, put a bird on it helvetica 8-bit tacos art party umami swag post-ironic biodiesel DIY. Hashtag mixtape meh schlitz try-hard aesthetic. Microdosing celiac before they sold out, literally flannel migas schlitz quinoa messenger bag food truck banh mi. Forage wolf kogi deep v leggings, cornhole street art chartreuse fashion axe. Meggings keytar banh mi brunch. Chambray franzen wolf, 8-bit ramps pop-up mlkshk pork belly man bun neutra whatever selvage VHS. Scenester chartreuse skateboard, keffiyeh hammock dreamcatcher chillwave farm-to-table four dollar toast affogato lumbersexual kinfolk gluten-free church-key sustainable.
-                        </p>
-                        <p>
-                            Bushwick small batch tote bag selfies, kitsch organic cardigan banjo craft beer before they sold out squid. Small batch franzen wayfarers meggings, poutine celiac leggings. Tofu put a bird on it venmo synth. Readymade kale chips green juice XOXO crucifix. Raw denim letterpress pork belly, sartorial food truck wayfarers semiotics thundercats neutra DIY schlitz gluten-free tacos asymmetrical. Four dollar toast pinterest narwhal locavore. Small batch cardigan vinyl, tumblr venmo tacos everyday carry typewriter man braid vice.
+                            Application allows you create and edit employees and work types. Just go to relevant pages (Employees, Work Types)
+                            and you will see all eployees/work types listed in data grid. After clicking to "Add new ..." and filling the form which appears,
+                            new entity will be created. For edit existing employees/work types choose the desired row and click to "Edit selected ...". To delete select
+                            the row again and click to "Delete ...".
                         </p>
                     </div>
                 </div>
-
+            </div>
+            <div class="body-section">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Creating worksheets</h4>
+                        <p>
+                            If you want to create worksheet for your employer got to page Worksheets and fill provided form.
+                            Select employee (you), date (in months) and one or more rows with stored work types with amount of
+                            time you spent to do this work. When your worksheet is ready save it. It will be stored in our database
+                            for next usage and export of invoice.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="body-section">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Data browsing</h4>
+                        <p>
+                            System provides feature called Invoice Browser. Using it you are able to list and filter existing
+                            records of worksheets. Use set of filters to specify the selection. Information about worksheets 
+                            (name of employee, date, price) will be shown in data grid. You can print it or export information about
+                            whole selection to docbook format. If you want to see detail of invoice, select the row with desired
+                            record and click to "Detail of selected invoice".
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 
