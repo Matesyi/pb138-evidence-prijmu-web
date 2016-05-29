@@ -35,9 +35,9 @@ public class WorkManagerImpl implements WorkManager {
     //Stores new work type to xml database.
     @Override
     public void createWork(Work work) {
-        work.setWorkID(countID());
+        work.setWork_id(countID());
         String query = "update insert <work>\n"
-                + "<id>" + work.getWorkID() + "</id>\n"
+                + "<id>" + work.getWork_id() + "</id>\n"
                 + "<type>" + work.getWork_type() + "</type>\n"
                 + "<price>" + work.getPrice() + "</price>\n"
                 + "</work>\n"
@@ -56,10 +56,10 @@ public class WorkManagerImpl implements WorkManager {
     //from values of object given in parameter.
     @Override
     public void updateWork(Work work) {
-        int workID = work.getWorkID();
+        int workID = work.getWork_id();
         String query = "update replace /root/works/work[./id = \""
                 + workID + "\"] with <work>\n"
-                + "<id>" + work.getWorkID() + "</id>\n"
+                + "<id>" + work.getWork_id() + "</id>\n"
                 + "<type>" + work.getWork_type() + "</type>\n"
                 + "<price>" + work.getPrice() + "</price>\n"
                 + "</work>";
@@ -76,7 +76,7 @@ public class WorkManagerImpl implements WorkManager {
     //If work with given id is not in database, it runs normally but nothing is deleted.
     @Override
     public void deleteWork(Work work) {
-        int workID = work.getWorkID();
+        int workID = work.getWork_id();
         String query = "update delete /root/works/work[./id = \"" + workID + "\"]";
         Logger.getLogger(WorkManagerImpl.class.getName()).log(Level.INFO, query);
         try {
@@ -128,7 +128,7 @@ public class WorkManagerImpl implements WorkManager {
     public Work resultToWork(String result) {
         Work work = new Work();
         String[] resultArray = result.split(";");
-        work.setWorkID(Integer.parseInt(resultArray[0]));
+        work.setWork_id(Integer.parseInt(resultArray[0]));
         work.setWork_type(resultArray[1]);
         work.setPrice(Integer.parseInt(resultArray[2]));
 //        System.out.println(work.toString());

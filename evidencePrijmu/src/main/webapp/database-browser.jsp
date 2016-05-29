@@ -107,33 +107,7 @@
 <%@include  file="components/footer.html" %>
 
 <script>
-    var employeesData = [
-        {
-            "personal_number": 15,
-            "name": "Tester",
-            "surname": "Testovaci"
-        },
-        {
-            "personal_number": 186,
-            "name": "John",
-            "surname": "Placeholder"
-        },
-        {
-            "personal_number": 56,
-            "name": "Peter",
-            "surname": "Parker"
-        },
-        {
-            "personal_number": 11,
-            "name": "Place",
-            "surname": "Holder"
-        },
-        {
-            "personal_number": 9586,
-            "name": "Sky",
-            "surname": "Scraper"
-        }
-    ];
+    var employeesData = ${employeesJson};
     var invoiceData = [
         {
             "employee": "11, Place Holder",

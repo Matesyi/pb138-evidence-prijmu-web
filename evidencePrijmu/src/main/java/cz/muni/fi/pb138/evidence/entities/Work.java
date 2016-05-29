@@ -8,14 +8,14 @@ import java.util.Objects;
  */
 public class Work {
 
-    private int workID;
+    private int work_id;
 
-    public int getWorkID() {
-        return workID;
+    public int getWork_id() {
+        return work_id;
     }
 
-    public void setWorkID(int workID) {
-        this.workID = workID;
+    public void setWork_id(int work_id) {
+        this.work_id = work_id;
     }
     private String work_type;
     private int price;
@@ -39,7 +39,7 @@ public class Work {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 53 * hash + this.workID;
+        hash = 53 * hash + this.work_id;
         hash = 53 * hash + Objects.hashCode(this.work_type);
         hash = 53 * hash + this.price;
         return hash;
@@ -57,7 +57,7 @@ public class Work {
             return false;
         }
         final Work other = (Work) obj;
-        if (this.workID != other.workID) {
+        if (this.work_id != other.work_id) {
             return false;
         }
         if (this.price != other.price) {
@@ -71,7 +71,7 @@ public class Work {
 
     @Override
     public String toString() {
-        return "Work{" + "workID=" + workID + ", work_type=" + work_type + ", price=" + price + '}';
+        return "Work{" + "work_id=" + work_id + ", work_type=" + work_type + ", price=" + price + '}';
     }
 
 }

@@ -1,38 +1,77 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <root>
-    <company> Fixed information about company </company>
+    <company> Fixed information about company
+    </company>
     <employees>
+        <nextID>15</nextID>
         <employee>
-            <id></id>
-            <name></name>
-            <surname></surname>
+            <id>2</id>
+            <name>Unknown</name>
+            <surname>Anonymus</surname>
+            <address>Pěkná Ulice 4</address>
+            <postCode>11002</postCode>
+            <city>Brno</city>
+            <active>false</active>
+        </employee>
+        <employee>
+            <id>7</id>
+            <name>dasdaedited</name>
+            <surname>asdedited</surname>
+            <address>adsdaqwe</address>
+            <postCode>30</postCode>
+            <city>dasd</city>
+            <active>true</active>
+        </employee>
+        <employee>
+            <id>8</id>
+            <name>Lukáš </name>
+            <surname>Kotol</surname>
+            <address>Sadova 24</address>
+            <postCode>67904</postCode>
+            <city>Adamov</city>
+            <active>true</active>
+        </employee>
+        <employee>
+            <id>14</id>
+            <name>test</name>
+            <surname>test</surname>
+            <address>test</address>
+            <postCode>10</postCode>
+            <city>das</city>
+            <active>true</active>
         </employee>
     </employees>
     <works>
+        <nextID>7</nextID>
         <work>
-            <type></type>
-            <rate></rate>
+            <id>3</id>
+            <type>test</type>
+            <price>20</price>
+        </work>
+        <work>
+            <id>5</id>
+            <type>lukasedited</type>
+            <price>555666000</price>
         </work>
     </works>
     <records>
         <record period="mm/rrrr">
-            <id></id>
+            <id/>
             <employee>
-                <id></id>
-                <name></name>
-                <surname></surname>
+                <id/>
+                <name/>
+                <surname/>
             </employee>
             <works>
                 <work>
-                    <type></type>
-                    <rate></rate>
-                    <hours></hours>
+                    <type/>
+                    <rate/>
+                    <hours/>
                 </work>
             </works>
         </record>
+        <nextID>1</nextID>
     </records>
     <invoices>
-        <invoice></invoice>
+        <invoice/>
     </invoices>
 </root>

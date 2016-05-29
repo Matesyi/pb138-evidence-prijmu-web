@@ -32,7 +32,7 @@
                         <a class="tile link-tile btn btn-block" onclick="editSelectedWorkType('#work-types-table')" title="edit the work type"><i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Edit selected Work Type</a>
                     </div>
                     <div class="col-md-4">
-                        <a class="tile link-tile btn btn-block" href="#" title="delete the work type"><i class="fa fa-minus-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Delete selected Work Type</a>
+                        <a class="tile link-tile btn btn-block" href="#" title="delete the work type" id="deleteButton"><i class="fa fa-minus-square" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Delete selected Work Type</a>
                     </div>
                 </div>
                 <div class="row margin-box">
@@ -42,6 +42,7 @@
                             <col width="30%">
                             <thead>
                                 <tr>
+                                    <th>work id</th>
                                     <th>Work Type</th>
                                     <th>Price</th>
                                 </tr>
@@ -55,43 +56,28 @@
         <%@include  file="components/footer.html" %>
 
         <script>
-            var workTypesData = [
-                {
-                    "work_type": "Coding",
-                    "price": 200
-                },
-                {
-                    "work_type": "Programming",
-                    "price": 300
-                },
-                {
-                    "work_type": "Testing",
-                    "price": 150
-                },
-                {
-                    "work_type": "Coffee breaking",
-                    "price": -40
-                },
-                {
-                    "work_type": "Creating documentation",
-                    "price": 150
-                }
-            ];
+            var workTypesData = ${worksJson};
+//            string.toLowerCase()
 
+            console.log(workTypesData);
             $('#work-types-table').simple_datagrid(
                     {
                         order_by: false,
                         data: workTypesData
                     }
             );
-
             function editSelectedWorkType(target) {
                 var row = $(target).simple_datagrid('getSelectedRow');
                 if (typeof row !== 'undefined' && row !== null) {
-                    $.redirect('work-type', {work_type: row.work_type, price: row.price}, 'GET');
+                    $.redirect('work-type', {work_type: row.work_type, price: row.price, work_id:row.work_id}, 'GET');
                 }
             }
             ;
+            $("tr").click(function() {
+                var toDeleteId = $(this).children(":first").text()
+                if(!isNaN(toDeleteId))
+                    $("#deleteButton").attr("href", "work-type/delete/" + toDeleteId);
+            });
         </script>
     </body>
 </html>

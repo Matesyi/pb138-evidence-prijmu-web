@@ -34,8 +34,18 @@
         <servlet-name>EmployeesServlet</servlet-name>
         <servlet-class>cz.muni.fi.pb138.evidence.servlet.EmployeesServlet</servlet-class>
     </servlet>
-
-
+    <servlet>
+        <servlet-name>WorkTypesServlet</servlet-name>
+        <servlet-class>cz.muni.fi.pb138.evidence.servlet.WorkTypesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DatabaseBrowserServlet</servlet-name>
+        <servlet-class>cz.muni.fi.pb138.evidence.servlet.DatabaseBrowserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HelpServlet</servlet-name>
+        <servlet-class>cz.muni.fi.pb138.evidence.servlet.HelpServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>jsp</servlet-name>
@@ -70,5 +80,29 @@
     <servlet-mapping>
         <servlet-name>EmployeesServlet</servlet-name>
         <url-pattern>/employee/delete/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WorkTypesServlet</servlet-name>
+        <url-pattern>/work-types</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WorkTypesServlet</servlet-name>
+        <url-pattern>/work-type</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WorkTypesServlet</servlet-name>
+        <url-pattern>/work-type/create</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WorkTypesServlet</servlet-name>
+        <url-pattern>/work-type/delete/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DatabaseBrowserServlet</servlet-name>
+        <url-pattern>/database-browser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HelpServlet</servlet-name>
+        <url-pattern>/help</url-pattern>
     </servlet-mapping>
 </web-app>
