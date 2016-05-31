@@ -37,7 +37,7 @@ public class InvoiceManagerImpl implements InvoiceManager {
         //String works is later used as substring of main query
         String works = "";
         for (Map.Entry<Work, Integer> entry: invoice.getWorks().entrySet()) {
-            works += "<work> <id>" + entry.getKey().getWorkID() + "</id>\n"
+            works += "<work> <id>" + entry.getKey().getWork_id() + "</id>\n"
                     + "<type>" + entry.getKey().getWork_type()+ "</type>\n"
                     + "<price>" + entry.getKey().getPrice()+ "</price>\n"
                     + "<amount>" + entry.getValue() + "</amount> </work>";
