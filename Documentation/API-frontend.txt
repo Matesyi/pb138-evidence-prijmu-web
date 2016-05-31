@@ -42,15 +42,47 @@ IN method POST - employee, date, work_type-1, work_amount-1, work_type-2, work_a
 ------------------------------------------------------------------------------------------------------------------
 database-browser.jsp
 OUT format JSON - (ACTIVE and NON-ACTIVE employees)
+**zaměstnanci**
 [
   {personal_number: 1, name: "John", surname: "Tester", address:"Testing 5", post_code: 12345, city: "Brno"},
   {personal_number: 2, name: "John", surname: "Plceholder", address:"Testing 6", post_code: 12345, city: "Brno"},
   {personal_number: 3, name: "Place", surname: "Holder", address:"Testing 7", post_code: 12345, city: "Brno"}
 ]
+OUT format JSON
+**faktury**
 [
-  {employee: "11, John Tester", date: "2016/03", price: 3025},
-  {employee: "11, John Tester", date: "2016/04", price: 871},
-  {employee: "37, Place Holder", date: "2016/03", price: 4231},
-  {employee: "11, John Tester", date: "2016/06", price: 2344}
+  {invoice_id: 1, employee: "11, John Tester", date: "2016/03", price: 3025},
+  {invoice_id: 2, employee: "11, John Tester", date: "2016/04", price: 871},
+  {invoice_id: 3, employee: "37, Place Holder", date: "2016/03", price: 4231},
+  {invoice_id: 4, employee: "11, John Tester", date: "2016/06", price: 2344}
 ]
+
+**nastavení filtrů**
 IN - personal_number, surname, date_from, date_to
+
+**pole faktur co mají být vytisknuty**
+IN - [1,2,4,5,7,9]
+
+------------------------------------------------------------------------------------------------------------------
+invoice-detail.jsp
+OUT - format JSON
+[
+	{personal_number: 1, name: "John", surname: "Tester", address:"Testing 5", post_code: 12345, city: "Brno"}, ------ informace o zamestnanci
+	{-----tady neco bude-----}, ------ informace o firme
+	{
+		invoice_id: 4, 
+		date: "2016/06", 
+		price: 2344,
+		[
+			list works
+		]
+	} ------ informace o fakture
+]
+
+Atributy ve faktuře teda navrhuji takto:
+id long (nebo int, radši bych zkusil long, pokud s tím nenarazím na problém)
+date String (formát bude mm/rrrr asi včetně lomítka, tak bych dal String)
+employer String
+employee Employee
+works List<Work+amount(tj. asi definovat nový typ)> nebo možná lépe
+Map<Work,amount>

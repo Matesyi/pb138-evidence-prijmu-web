@@ -57,7 +57,7 @@ public class Test {
         Work work = new Work();
         work.setWork_type("updatedWork");
         work.setPrice(250);
-        work.setWorkID(1);//insert appropriate ID
+        work.setWork_id(1);//insert appropriate ID
         return work;
     }
     
@@ -65,7 +65,7 @@ public class Test {
         Work work = new Work();
         work.setWork_type("updatedWork");
         work.setPrice(250);
-        work.setWorkID(2);//insert appropriate ID
+        work.setWork_id(2);//insert appropriate ID
         return work;
     }
     

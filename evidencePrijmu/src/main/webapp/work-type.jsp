@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="body-section">
-                <form action="" method="post">
+                <form action="work-type/create" method="post">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
                             <label class="input-label">
@@ -38,6 +38,7 @@
                                 <input type="text" name="price" class="form-control" />
                             </label>
                         </div>
+                        <input type="hidden" name="work_id" value="" />
                     </div>
                     <div class="row margin-box">
                         <div class="col-md-4 col-md-offset-2">
@@ -60,6 +61,7 @@
 
                 $("input[name=work_type]").val(parameters.work_type);
                 $("input[name=price]").val(parameters.price);
+                $("input[name=work_id]").val(parameters.work_id);
             }
         </script>
     </body>

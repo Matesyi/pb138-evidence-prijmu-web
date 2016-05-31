@@ -75,7 +75,7 @@
                     <button type="submit" class="tile link-tile btn btn-block" ><i class='fa fa-floppy-o' aria-hidden='true'></i>&nbsp;&nbsp;&nbsp;SAVE</button>
                 </div>
                 <div class="col-md-4">
-                    <a href="index" class="tile link-tile btn btn-block" ><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;BACK</a>
+                    <a href="/" class="tile link-tile btn btn-block" ><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;BACK</a>
                 </div>
             </div>
         </form>
@@ -84,28 +84,7 @@
 
 <%@include  file="components/footer.html" %>
 <script>
-    var workTypesData = [
-        {
-            "work_type": "Coding",
-            "price": 200
-        },
-        {
-            "work_type": "Programming",
-            "price": 300
-        },
-        {
-            "work_type": "Testing",
-            "price": 150
-        },
-        {
-            "work_type": "Coffee breaking",
-            "price": -40
-        },
-        {
-            "work_type": "Creating documentation",
-            "price": 150
-        }
-    ];
+    var workTypesData = ${worksJson};
     var employeesData = ${employeesJson};
 
     var numberOfWorkRows = 1;
