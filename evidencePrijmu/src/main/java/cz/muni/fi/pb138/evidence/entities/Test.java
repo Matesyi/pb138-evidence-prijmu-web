@@ -1,5 +1,8 @@
 package cz.muni.fi.pb138.evidence.entities;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * This class serves for testing only
  *
@@ -65,14 +68,33 @@ public class Test {
         work.setWorkID(2);//insert appropriate ID
         return work;
     }
+    
+    private static Invoice exampleInvoice() {
+        Invoice invoice = new Invoice();
+        invoice.setMonth(10);
+        invoice.setYear(2014);
+        invoice.setEmployer("Firma");
+        invoice.setEmployee(exampleEmployeeDelete());
+        invoice.setWorks(exampleWorks());
+        return invoice;
+    }
+    
+    private static Map<Work, Integer> exampleWorks() {
+        Map<Work, Integer> works = new HashMap<>();
+        works.put(exampleWorkDelete(),10);
+        works.put(exampleWorkUpdate(),5);
+        return works;
+    }
 
     private static EmployeeManagerImpl employeeManager;
     private static WorkManagerImpl workManager;
+    private static InvoiceManagerImpl invoiceManager;
 
     public static void main(String[] args) {
 //        int newID = EmployeeManagerImpl.countID();
         employeeManager = new EmployeeManagerImpl();
         workManager = new WorkManagerImpl();
+        invoiceManager = new InvoiceManagerImpl();
 //        employeeManager.createEmployee(exampleEmployee1());
 //        employeeManager.setEmployeeActive(exampleEmployeeDelete());
 //        employeeManager.deleteEmployee(exampleEmployeeDelete());
@@ -83,6 +105,7 @@ public class Test {
 //        workManager.createWork(exampleWork());
 //        workManager.deleteWork(exampleWorkDelete());
 //        workManager.getWorkById(3);
-        System.out.println("All work types:" + workManager.findAllWorks());
+//        System.out.println("All work types:" + workManager.findAllWorks());
+        invoiceManager.createInvoice(exampleInvoice());
     }
 }
