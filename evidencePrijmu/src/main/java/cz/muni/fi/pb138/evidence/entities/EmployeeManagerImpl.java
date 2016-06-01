@@ -165,7 +165,7 @@ public class EmployeeManagerImpl implements EmployeeManager {
     public List<Employee> findActiveEmployees() {
         List<Employee> result = new ArrayList<>();
         String query = "for $p in /root/employees/employee where ($p/active) = \"true\""
-                + " return (\":\", data($p/id), \";\" , data($p/name), \";\""
+                + " return (\"SeparatorA\", data($p/id), \";\" , data($p/name), \";\""
                 + ", data($p/surname), \";\" ,data($p/address), \";\" ,"
                 + "data($p/postCode), \";\" ,data($p/city), \";\" ,data($p/active))";
         String resultStr = "";
@@ -175,7 +175,7 @@ public class EmployeeManagerImpl implements EmployeeManager {
             String msg = "Error when retrieving all active employees from database";
             Logger.getLogger(EmployeeManagerImpl.class.getName()).log(Level.SEVERE, msg, ex);
         }
-        String[] resultArray = resultStr.split(":");
+        String[] resultArray = resultStr.split("SeparatorA");
         //Iteration from 1., not from 0. element (0. is empty String)
         for (int i = 1; i < resultArray.length; i++) {
             result.add(resultToEmployee(resultArray[i]));
@@ -188,7 +188,7 @@ public class EmployeeManagerImpl implements EmployeeManager {
     public List<Employee> findInactiveEmplyees() {
         List<Employee> result = new ArrayList<>();
         String query = "for $p in /root/employees/employee where ($p/active) = \"false\""
-                + " return (\":\", data($p/id), \";\" , data($p/name), \";\""
+                + " return (\"SeparatorA\", data($p/id), \";\" , data($p/name), \";\""
                 + ", data($p/surname), \";\" ,data($p/address), \";\" ,"
                 + "data($p/postCode), \";\" ,data($p/city), \";\" ,data($p/active))";
         String resultStr = "";
@@ -198,7 +198,7 @@ public class EmployeeManagerImpl implements EmployeeManager {
             String msg = "Error when retrieving all active employees from database";
             Logger.getLogger(EmployeeManagerImpl.class.getName()).log(Level.SEVERE, msg, ex);
         }
-        String[] resultArray = resultStr.split(":");
+        String[] resultArray = resultStr.split("SeparatorA");
         //Iteration from 1., not from 0. element (0. is empty String)
         for (int i = 1; i < resultArray.length; i++) {
             result.add(resultToEmployee(resultArray[i]));

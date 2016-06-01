@@ -101,11 +101,13 @@ public class Test {
 //        employeeManager.updateEmployee(exampleEmployeeUpdate());
 //        employeeManager.getEmployeeById(3);
 //        System.out.println("Active: " + employeeManager.findActiveEmployees());
-//        System.out.println("Inactive" + employeeManager.findInactiveEmplyees());
+//        System.out.println("Inactive:" + employeeManager.findInactiveEmplyees());
 //        workManager.createWork(exampleWork());
 //        workManager.deleteWork(exampleWorkDelete());
 //        workManager.getWorkById(3);
 //        System.out.println("All work types:" + workManager.findAllWorks());
-        invoiceManager.createInvoice(exampleInvoice());
+//        invoiceManager.createInvoice(exampleInvoice());
+//        System.out.println(invoiceManager.getInvoiceById(4));
+        System.out.println(invoiceManager.findInvoicesByFilter(3, "Anonymus", 2012, 0, 2015, 10));
     }
 }
