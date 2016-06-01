@@ -1,0 +1,11 @@
+<root>
+    <employees>
+        <nextID>1</nextID>
+    </employees>
+    <works>
+        <nextID>1</nextID>
+    </works>
+    <invoices>
+        <nextID>1</nextID>
+    </invoices>
+</root>
