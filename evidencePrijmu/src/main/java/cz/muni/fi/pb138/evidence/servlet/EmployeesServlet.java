@@ -17,11 +17,18 @@ import cz.muni.fi.pb138.evidence.entities.Employee;
  */
 public class EmployeesServlet extends HttpServlet {
 
+    /**
+     * @param req  data from java server page
+     * @param resp response to java server page
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String url = req.getRequestURI();
         EmployeeManagerImpl employeeManager = new EmployeeManagerImpl();
         switch (url) {
+            // show all employees
             case "/employees":
                 List<Employee> employees = employeeManager.findActiveEmployees();
                 String employeesJson = new Gson().toJson(employees);
@@ -29,10 +36,12 @@ public class EmployeesServlet extends HttpServlet {
                 RequestDispatcher viewEmployees = req.getRequestDispatcher("/employees.jsp");
                 viewEmployees.forward(req, resp);
                 break;
+            // show selected employee
             case "/employee":
                 RequestDispatcher viewEmployee = req.getRequestDispatcher("/employee.jsp");
                 viewEmployee.forward(req, resp);
                 break;
+            // request to delete selected employee
             default:
                 String urlParts[] = url.split("/", 4);
                 Employee employee = employeeManager.getEmployeeById(Integer.parseInt(urlParts[3]));
@@ -42,13 +51,19 @@ public class EmployeesServlet extends HttpServlet {
         }
     }
 
+    /**
+     * @param req  data from java server page
+     * @param resp response to java server page
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String url = req.getRequestURI();
         switch (url) {
+            // create new employee
             case "/employee/create":
                 Employee employee = new Employee();
-
                 employee.setName(req.getParameter("name"));
                 employee.setSurname(req.getParameter("surname"));
                 employee.setAddress(req.getParameter("address"));

@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +19,13 @@ import cz.muni.fi.pb138.evidence.entities.Employee;
  */
 public class WorksheetServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    /**
+     * @param req  data from java server page
+     * @param resp response to java server page
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //  create manager
         EmployeeManagerImpl employeeManager = new EmployeeManagerImpl();
         //  get all active employees
@@ -29,19 +33,25 @@ public class WorksheetServlet extends HttpServlet {
         //  create json from List
         String employeesJson = new Gson().toJson(employees);
         //  pass employeesJson to view
-        request.setAttribute("employeesJson", employeesJson);
+        req.setAttribute("employeesJson", employeesJson);
 
         WorkManagerImpl workManager = new WorkManagerImpl();
         List<Work> works = workManager.findAllWorks();
         String worksJson = new Gson().toJson(works);
-        request.setAttribute("worksJson", worksJson);
+        req.setAttribute("worksJson", worksJson);
 
         // create view with worksheet.jsp template
-        RequestDispatcher view = request.getRequestDispatcher("/worksheet.jsp");
+        RequestDispatcher view = req.getRequestDispatcher("/worksheet.jsp");
         // go to template with variables
-        view.forward(request, response);
+        view.forward(req, resp);
     }
 
+    /**
+     * @param req  data from java server page
+     * @param resp response to java server page
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String url = req.getRequestURI();
         switch (url) {
@@ -58,6 +68,7 @@ public class WorksheetServlet extends HttpServlet {
                 Map<Work, Integer> worksMap = new HashMap<>();
                 int workCount = Integer.parseInt(req.getParameter("workCount"));
                 WorkManagerImpl workManager = new WorkManagerImpl();
+                // get all works from page
                 for (int i = 0; i < workCount; i++) {
                     int workId = Integer.parseInt(req.getParameter("work_type-" + Integer.toString(i + 1)));
                     Work work = workManager.getWorkById(workId);

@@ -16,11 +16,20 @@ import java.util.Map;
 
 /**
  * Created by lukas on 28.5.16.
+ * Handle incoming request to database browser.
  */
 public class DatabaseBrowserServlet extends HttpServlet {
+
+    /**
+     * @param req  data from java server page
+     * @param resp response to java server page
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String url = req.getRequestURI();
         InvoiceManagerImpl invoiceManager = new InvoiceManagerImpl();
+        // show all invoices
         if (url.equals("/database-browser")) {
             req.setAttribute("employeesJson", getActiveEmployeesJson());
             List<Invoice> invoices = invoiceManager.findInvoicesByFilter(0, null, 1950, 0, 3000, 0);
@@ -29,6 +38,7 @@ public class DatabaseBrowserServlet extends HttpServlet {
             view.forward(req, resp);
 
         } else {
+            // show request invoice detail
             String urlParts[] = url.split("/", 3);
             if (urlParts[1].equals("invoice-detail")) {
                 Invoice invoice = invoiceManager.getInvoiceById(Integer.parseInt(urlParts[2]));
@@ -58,6 +68,12 @@ public class DatabaseBrowserServlet extends HttpServlet {
         }
     }
 
+    /**
+     * @param req  data from java server page
+     * @param resp response to java server page
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("employeesJson", getActiveEmployeesJson());
         String personalNumberString = req.getParameter("employee");
@@ -89,12 +105,24 @@ public class DatabaseBrowserServlet extends HttpServlet {
         view.forward(req, resp);
     }
 
+    /**
+     * Create json string containing all active Employees
+     *
+     * @return json String
+     */
     private String getActiveEmployeesJson() {
         EmployeeManagerImpl employeeManager = new EmployeeManagerImpl();
         List<Employee> employees = employeeManager.findActiveEmployees();
         return new Gson().toJson(employees);
     }
 
+
+    /**
+     * Return all invoices formatted in JSONArray
+     *
+     * @param invoices
+     * @return JSONArray invoices
+     */
     private JSONArray getInvoicesJson(List<Invoice> invoices) {
         JSONArray invoicesJsonArray = new JSONArray();
         for (Invoice invoice : invoices) {

@@ -17,6 +17,12 @@ import java.util.List;
  */
 public class WorkTypesServlet extends HttpServlet {
 
+    /**
+     * @param req  data from java server page
+     * @param resp response to java server page
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String url = req.getRequestURI();
@@ -42,6 +48,12 @@ public class WorkTypesServlet extends HttpServlet {
         }
     }
 
+    /**
+     * @param req  data from java server page
+     * @param resp response to java server page
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String url = req.getRequestURI();
         switch (url) {
