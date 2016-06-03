@@ -55,11 +55,15 @@ public class DatabaseBrowserServlet extends HttpServlet {
                 object2.put("invoice_id", invoice.getId());
                 object2.put("date", invoice.getMonth() + "/" + invoice.getYear());
                 int priceSum = 0;
+                int iteration = 0;
                 for (Map.Entry<Work, Integer> entry : invoice.getWorks().entrySet()) {
+                    object2.put("work_type_"+Integer.toString(iteration), entry.getKey().getWork_type());
+                    object2.put("work_price_"+Integer.toString(iteration), entry.getKey().getPrice());
                     priceSum += entry.getValue() * entry.getKey().getPrice();
+                    iteration++;
                 }
+                object2.put("workCount", iteration);
                 object2.put("price", priceSum);
-                object2.putAll(invoice.getWorks());
                 invoiceJsonArray.add(object2);
                 req.setAttribute("invoiceJson", invoiceJsonArray);
                 RequestDispatcher view = req.getRequestDispatcher("/invoice-detail.jsp");
