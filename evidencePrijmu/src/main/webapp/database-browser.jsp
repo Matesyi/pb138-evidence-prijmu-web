@@ -25,7 +25,7 @@
     </div>
     <div class="body-section">
         <h3 class="text-left">Filters:</h3>
-        <form action="" method="post">
+        <form action="/database-browser" method="post">
             <div class="row">
                 <div class="col-md-6">
                     <label class="input-label">
@@ -38,7 +38,7 @@
                 <div class="col-md-6">
                     <label class="input-label">
                         <h4>Employee - surname</h4>
-                        <select name='employee' id='surname-select' class='form-control'>
+                        <select name="employee_surname" id='surname-select' class='form-control'>
                             <option value="" disabled selected>--- Filter by surname ---</option>
                         </select>
                     </label>
@@ -68,7 +68,7 @@
                 <h3 class="text-left" style="margin: 0;">Result:</h3>
             </div>
             <div class="col-md-4">
-                <a class="tile link-tile btn btn-block" onclick="detailOfSelectedInvoice('#invoice-table')" title="detail of selected invoice"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Detail of selected invoice</a>
+                <a class="tile link-tile btn btn-block" id="detailButton" href="" title="detail of selected invoice"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Detail of selected invoice</a>
             </div>
         </div>
         <div class="row margin-box">
@@ -79,6 +79,7 @@
                     <col width="33%">
                     <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Employee</th>
                         <th>Date</th>
                         <th>Price</th>
@@ -108,10 +109,8 @@
 
 <script>
     var employeesData = ${employeesJson};
-    var test = ${invoicesJson};
     var invoiceData = ${invoicesJson};
     console.log(invoiceData);
-
     //select box for employees
     $.each(employeesData, function (index, value) {
         $('#personal_number-select')
@@ -144,6 +143,11 @@
             $.redirect('invoice-detail', {}, 'GET');
         }
     };
+    $("tr").click(function() {
+        var detailId = $(this).children(":first").text()
+        if(!isNaN(detailId))
+            $("#detailButton").attr("href", "invoice-detail/" + detailId);
+    });
 </script>
 
 </body>

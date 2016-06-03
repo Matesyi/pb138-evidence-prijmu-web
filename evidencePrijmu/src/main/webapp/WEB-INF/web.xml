@@ -109,4 +109,8 @@
         <servlet-name>WorksheetServlet</servlet-name>
         <url-pattern>/worksheet/create</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DatabaseBrowserServlet</servlet-name>
+        <url-pattern>/invoice-detail/*</url-pattern>
+    </servlet-mapping>
 </web-app>

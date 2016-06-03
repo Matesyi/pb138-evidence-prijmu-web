@@ -140,7 +140,8 @@
 
         <%@include  file="components/footer.html" %>
         <script>
-
+            var test = ${invoiceJson};
+            console.log(test);
         </script>
     </body>
 </html>
