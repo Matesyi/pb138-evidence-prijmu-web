@@ -79,6 +79,12 @@ OUT - format JSON
 	} ------ informace o fakture
 ]
 
+Priklad dat jak budou v invoice-detail.jps
+
+[{"address":"Sadova 24","city":"Adamov","surname":"Kotol","post_code":67904,"name":"Lukáš ","personal_number":8},
+{"date":"6\/2016","Work{work_id=3, work_type=test, price=20}":100,"price":555668000,"invoice_id":6,
+"Work{work_id=5, work_type=lukasedited, price=555666000}":1}];
+
 Atributy ve faktuře teda navrhuji takto:
 id long (nebo int, radši bych zkusil long, pokud s tím nenarazím na problém)
 date String (formát bude mm/rrrr asi včetně lomítka, tak bych dal String)
