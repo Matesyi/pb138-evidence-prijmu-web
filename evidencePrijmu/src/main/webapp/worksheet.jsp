@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="body-section">
-        <form action="" method="post">
+        <form action="worksheet/create" method="post">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <label class="input-label">
@@ -58,6 +58,7 @@
                         <div class="col-xs-6 col-md-4">
                             <input type="text" name="work_amount-1" class="form-control" placeholder="amount of working hours" />
                         </div>
+                        <input type="hidden" name="workCount" value="1" id="workCount">
                     </div>
                 </div>
             </div>
@@ -96,7 +97,7 @@
     $.each(employeesData, function (index, value) {
         $('#employee-select')
                 .append($("<option></option>")
-                        .attr("value", value.name + " " + value.surname + " (" + value.personal_number + ")")
+                        .attr("value", value.personal_number)
                         .text(value.name + " " + value.surname + " (" + value.personal_number + ")"));
     });
 
@@ -106,7 +107,7 @@
         $.each(workTypesData, function (index, value) {
             $('#work-type-' + id)
                     .append($("<option></option>")
-                            .attr("value", value.work_type + " (price: " + value.price + ")")
+                            .attr("value", value.work_id)
                             .text(value.work_type + " (price: " + value.price + ")"));
         });
     }
@@ -127,6 +128,7 @@
                                     </div>"));
         //fill added select box
         fillWorkTypeSlectBox(numberOfWorkRows);
+        $("#workCount").val(numberOfWorkRows);
     }
 
     //function for adding work row
@@ -136,6 +138,7 @@
         }
         $("#work-" + numberOfWorkRows).remove();
         numberOfWorkRows--;
+        $("#workCount").val(numberOfWorkRows);
     }
 </script>
 </body>

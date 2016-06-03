@@ -1,16 +1,17 @@
 package cz.muni.fi.pb138.evidence.entities;
 
 import cz.muni.fi.pb138.evidence.xmlEdit.ExecuteQuery;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.xmldb.api.base.XMLDBException;
 
 /**
- *
  * @author L
  */
 public class InvoiceManagerImpl implements InvoiceManager {
