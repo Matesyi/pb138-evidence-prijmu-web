@@ -1,5 +1,6 @@
 package cz.muni.fi.pb138.evidence;
 
+import cz.muni.fi.pb138.evidence.xmlEdit.ExecuteQuery;
 import java.net.URI;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
@@ -16,6 +17,8 @@ public class Main
     public static void main(String[] args) throws Exception
     {
         Main main = new Main();
+        
+        ExecuteQuery.initCollection();
         
         int serverPort = 8090;
         main.startJetty(serverPort);
