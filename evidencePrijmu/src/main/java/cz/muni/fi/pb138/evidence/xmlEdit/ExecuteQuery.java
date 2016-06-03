@@ -80,10 +80,10 @@ public class ExecuteQuery {
             CollectionManagementService mgtService = 
                 (CollectionManagementService)root.getService("CollectionManagementService", "1.0");
             mgtService.createCollection(collectionPath.substring((XmldbURI.ROOT_COLLECTION + "/").length()));
+            
+            // puts default resource to db
+            putResource(initResource);
         }
-        
-        // puts default resource to db
-        putResource(initResource);
     }
     
     public static void putResource(String fileName)
