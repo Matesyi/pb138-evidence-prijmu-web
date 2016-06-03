@@ -108,43 +108,9 @@
 
 <script>
     var employeesData = ${employeesJson};
-    var invoiceData = [
-        {
-            "employee": "11, Place Holder",
-            "date": "May 2016",
-            "price": "2500"
-        },
-        {
-            "employee": "130, John Tester",
-            "date": "May 2016",
-            "price": "4302"
-        },
-        {
-            "employee": "11, Place Holder",
-            "date": "June 2016",
-            "price": "3207"
-        },
-        {
-            "employee": "11, Place Holder",
-            "date": "July 2016",
-            "price": "3012"
-        },
-        {
-            "employee": "130, John Tester",
-            "date": "July 2016",
-            "price": "1240"
-        },
-        {
-            "employee": "40, Papa Mamma",
-            "date": "July 2016",
-            "price": "5023"
-        },
-        {
-            "employee": "11, Place Holder",
-            "date": "August 2016",
-            "price": "3210"
-        }
-    ];
+    var test = ${invoicesJson};
+    var invoiceData = ${invoicesJson};
+    console.log(invoiceData);
 
     //select box for employees
     $.each(employeesData, function (index, value) {
