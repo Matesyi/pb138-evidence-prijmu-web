@@ -78,6 +78,7 @@
         <%@include  file="components/footer.html" %>
 
         <script>
+            //filling the employee form with data from URL
             if (window.location.search !== "") {
                 var parameters = parseGetParameters(window.location.search);
 

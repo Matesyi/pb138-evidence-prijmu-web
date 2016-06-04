@@ -57,8 +57,13 @@
         <%@include  file="components/footer.html" %>
 
         <script>
+            /**
+             * employees data
+             * @type JSON
+             */
             var employeesData = ${employeesJson};
 
+            //data grid init
             $('#employees-table').simple_datagrid(
                     {
                         order_by: false,
@@ -66,12 +71,19 @@
                     }
             );
 
+            /**
+             * function for sending employee to editing mode
+             * @param {type} target
+             * @returns {void}
+             */
             function editSelectedEmployee(target) {
                 var row = $(target).simple_datagrid('getSelectedRow');
                 if (typeof row !== 'undefined' && row !== null) {
                     $.redirect('employee', {personal_number: row.personal_number, name: row.name, surname: row.surname, address: row.address, city: row.city, post_code: row.postCode}, 'GET');
                 }
             };
+            
+            //deleting employee
             $("tr").click(function() {
                 var toDeleteId = $(this).children(":first").text()
                 if(!isNaN(toDeleteId))

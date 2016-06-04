@@ -57,22 +57,28 @@
 
         <script>
             var workTypesData = ${worksJson};
-//            string.toLowerCase()
 
-            console.log(workTypesData);
+            //data grid init
             $('#work-types-table').simple_datagrid(
                     {
                         order_by: false,
                         data: workTypesData
                     }
             );
+    
+            /**
+             * function for sending work type to editing mode
+             * @param {type} target
+             * @returns {void}
+             */
             function editSelectedWorkType(target) {
                 var row = $(target).simple_datagrid('getSelectedRow');
                 if (typeof row !== 'undefined' && row !== null) {
                     $.redirect('work-type', {work_type: row.work_type, price: row.price, work_id:row.work_id}, 'GET');
                 }
-            }
-            ;
+            };
+            
+            //deleting work type
             $("tr").click(function() {
                 var toDeleteId = $(this).children(":first").text()
                 if(!isNaN(toDeleteId))
