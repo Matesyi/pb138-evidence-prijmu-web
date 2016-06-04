@@ -46,6 +46,10 @@
         <servlet-name>HelpServlet</servlet-name>
         <servlet-class>cz.muni.fi.pb138.evidence.servlet.HelpServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TransformationServlet</servlet-name>
+        <servlet-class>cz.muni.fi.pb138.evidence.servlet.TransformationServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>jsp</servlet-name>
@@ -112,5 +116,9 @@
     <servlet-mapping>
         <servlet-name>DatabaseBrowserServlet</servlet-name>
         <url-pattern>/invoice-detail/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TransformationServlet</servlet-name>
+        <url-pattern>/transformation/docbook/*</url-pattern>
     </servlet-mapping>
 </web-app>

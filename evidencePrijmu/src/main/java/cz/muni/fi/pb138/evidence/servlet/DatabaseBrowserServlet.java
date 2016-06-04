@@ -1,5 +1,6 @@
 package cz.muni.fi.pb138.evidence.servlet;
 
+import antlr.DocBookCodeGenerator;
 import com.google.gson.Gson;
 import cz.muni.fi.pb138.evidence.entities.*;
 import org.json.simple.JSONArray;
@@ -42,6 +43,7 @@ public class DatabaseBrowserServlet extends HttpServlet {
             String urlParts[] = url.split("/", 3);
             if (urlParts[1].equals("invoice-detail")) {
                 Invoice invoice = invoiceManager.getInvoiceById(Integer.parseInt(urlParts[2]));
+                req.setAttribute("invoiceId", urlParts[2]);
                 req.setAttribute("invoiceJson", createInvoiceDetailJson(invoice));
                 RequestDispatcher view = req.getRequestDispatcher("/invoice-detail.jsp");
                 view.forward(req, resp);
@@ -156,6 +158,8 @@ public class DatabaseBrowserServlet extends HttpServlet {
         JSONObject object3 = new JSONObject();
         object3.put("works", workArray);
         invoiceJsonArray.add(object3);
+        DocBookCodeGenerator docBookCodeGenerator = new DocBookCodeGenerator();
+
         return invoiceJsonArray;
     }
 }

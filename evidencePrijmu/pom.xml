@@ -66,7 +66,16 @@
             <artifactId>json-simple</artifactId>
             <version>1.1</version>
         </dependency>
-    
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>fop</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.docbook</groupId>
+            <artifactId>docbook-xsl</artifactId>
+            <version>1.72.0</version>
+        </dependency>
         <!-- EXIST DB dependencies -->
         
         <dependency>
