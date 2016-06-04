@@ -155,30 +155,42 @@
 
         <%@include file="components/footer.html" %>
         <script>
+            /**
+             * data for invoice detail output
+             * @type JSON
+             */
             var invoiceData = ${invoiceJson};
+
+            /**
+             * function for filling the form of invoice
+             * @returns {void}
+             */
+            function fillInvoiceData() {
+                $("#invoice_id").html("Invoice #" + invoiceData[1].invoice_id + " - detail");
+                $("#invoice_date").html("from " + invoiceData[1].date);
+
+                $("#employee-address").html(invoiceData[0].address);
+                $("#employee-city").html(invoiceData[0].city);
+                $("#employee-surname").html(invoiceData[0].surname);
+                $("#employee-post_code").html(invoiceData[0].post_code);
+                $("#employee-name").html(invoiceData[0].name);
+                $("#employee-personal_number").html(invoiceData[0].personal_number);
+
+                $("#sub_total").html(invoiceData[1].price + ",-");
+                $("#tax_rate").html(invoiceData[1].price * 0.21 + ",-");
+                $("#total_balance").html(invoiceData[1].price * 1.21 + ",-");
+
+                $.each(invoiceData[2].works, function (index, value) {
+                    $("#works-table").append("<tr><td>"
+                            + value.work_type + "</td><td>" +
+                            +value.work_price + "</td><td>" +
+                            +value.work_amount + "</td><td>" +
+                            +(value.work_price * value.work_amount) +
+                            "</td></tr>");
+                });
+            }
             
-            $("#invoice_id").html("Invoice #" + invoiceData[1].invoice_id + " - detail");
-            $("#invoice_date").html("from " + invoiceData[1].date);
-            
-            $("#employee-address").html(invoiceData[0].address);
-            $("#employee-city").html(invoiceData[0].city);
-            $("#employee-surname").html(invoiceData[0].surname);
-            $("#employee-post_code").html(invoiceData[0].post_code);
-            $("#employee-name").html(invoiceData[0].name);
-            $("#employee-personal_number").html(invoiceData[0].personal_number);
-            
-            $("#sub_total").html(invoiceData[1].price + ",-");
-            $("#tax_rate").html(invoiceData[1].price * 0.21  + ",-");
-            $("#total_balance").html(invoiceData[1].price * 1.21  + ",-");
-            
-            $.each(invoiceData[2].works, function (index, value) {
-                $("#works-table").append( "<tr><td>" 
-                        + value.work_type + "</td><td>" +
-                        + value.work_price + "</td><td>" +
-                        + value.work_amount + "</td><td>" +
-                        + (value.work_price * value.work_amount) + 
-                         "</td></tr>" );
-            });
+            fillInvoiceData();
         </script>
     </body>
 </html>

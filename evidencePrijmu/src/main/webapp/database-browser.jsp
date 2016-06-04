@@ -108,9 +108,18 @@
 <%@include  file="components/footer.html" %>
 
 <script>
+    /**
+     * employee data
+     * @type JSON
+     */
     var employeesData = ${employeesJson};
+    
+    /**
+     * invoice data
+     * @type JSON
+     */
     var invoiceData = ${invoicesJson};
-    console.log(invoiceData);
+
     //select box for employees
     $.each(employeesData, function (index, value) {
         $('#personal_number-select')
@@ -122,7 +131,8 @@
                         .attr("value", value.surname)
                         .text(value.surname));
     });
-
+    
+    //data grid init
     $('#invoice-table').simple_datagrid(
             {
                 order_by: false,
@@ -137,6 +147,11 @@
     });
     $('#price-sum').html('Total price summary: ' + priceSum);
 
+    /**
+     * function for selecting desired invoice
+     * @param {type} target
+     * @returns {void}
+     */
     function detailOfSelectedInvoice(target) {
         var row = $(target).simple_datagrid('getSelectedRow');
         if (typeof row !== 'undefined' && row !== null) {

@@ -56,6 +56,7 @@
         <%@include  file="components/footer.html" %>
 
         <script>
+            //filling the work type form with data
             if (window.location.search !== "") {
                 var parameters = parseGetParameters(window.location.search);
 

@@ -85,7 +85,16 @@
 
 <%@include  file="components/footer.html" %>
 <script>
+    /**
+     * work types data
+     * @type JSON
+     */
     var workTypesData = ${worksJson};
+    
+    /**
+     * employees data
+     * @type JSON
+     */
     var employeesData = ${employeesJson};
 
     var numberOfWorkRows = 1;
@@ -101,7 +110,11 @@
                         .text(value.name + " " + value.surname + " (" + value.personal_number + ")"));
     });
 
-    //function for filling the work select box
+    /**
+     * function for filling the work select box
+     * @param {type} id
+     * @returns {void}
+     */
     function fillWorkTypeSlectBox(id) {
         //select box for employees
         $.each(workTypesData, function (index, value) {
@@ -112,7 +125,10 @@
         });
     }
 
-    //function for adding work row
+    /**
+     * function for adding work row
+     * @returns {void}
+     */
     function addWorkRow() {
         numberOfWorkRows++;
         $("#work-holder")
@@ -131,7 +147,10 @@
         $("#workCount").val(numberOfWorkRows);
     }
 
-    //function for adding work row
+    /**
+     * function for adding work row
+     * @returns {void}
+     */
     function deleteWorkRow() {
         if (numberOfWorkRows === 1) {
             return;
