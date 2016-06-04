@@ -159,7 +159,7 @@
              * data for invoice detail output
              * @type JSON
              */
-            var invoiceData = ${invoiceJson}
+            var invoiceData = ${invoiceJson};
 
             /**
              * function for filling the form of invoice
@@ -189,7 +189,7 @@
                             "</td></tr>");
                 });
                 
-                $("#generate-form").attr("action", "/transformation/docbook/${invoiceId}");
+                $("#generate-form").attr("action", "/transformation/docbook/" + invoiceData[1].invoice_id);
             }
             
             //call when it is ready
