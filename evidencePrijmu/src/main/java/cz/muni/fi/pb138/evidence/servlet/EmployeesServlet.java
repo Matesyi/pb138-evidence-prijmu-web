@@ -68,7 +68,7 @@ public class EmployeesServlet extends HttpServlet {
                 employee.setSurname(req.getParameter("surname"));
                 employee.setAddress(req.getParameter("address"));
                 employee.setCity(req.getParameter("city"));
-                employee.setPostCode(Integer.parseInt(req.getParameter("post_code")));
+                employee.setPostCode(req.getParameter("post_code"));
                 employee.setActive(true);
                 EmployeeManagerImpl employeeManager = new EmployeeManagerImpl();
                 if (req.getParameter("personal_number").isEmpty()) {

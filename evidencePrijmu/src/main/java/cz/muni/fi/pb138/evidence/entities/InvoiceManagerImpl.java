@@ -172,7 +172,7 @@ public class InvoiceManagerImpl implements InvoiceManager {
         employee.setName(resultArray[2]);
         employee.setSurname(resultArray[3]);
         employee.setAddress(resultArray[4]);
-        employee.setPostCode(Integer.parseInt(resultArray[5]));
+        employee.setPostCode(resultArray[5]);
         employee.setCity(resultArray[6]);
         invoice.setEmployee(employee);
         invoice.setId(Long.parseLong(resultArray[0]));

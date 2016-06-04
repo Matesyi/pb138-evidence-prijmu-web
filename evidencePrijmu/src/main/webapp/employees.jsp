@@ -69,7 +69,7 @@
             function editSelectedEmployee(target) {
                 var row = $(target).simple_datagrid('getSelectedRow');
                 if (typeof row !== 'undefined' && row !== null) {
-                    $.redirect('employee', {personal_number: row.personal_number, name: row.name, surname: row.surname, address: row.address, city: row.city, post_code: row.post_code}, 'GET');
+                    $.redirect('employee', {personal_number: row.personal_number, name: row.name, surname: row.surname, address: row.address, city: row.city, post_code: row.postCode}, 'GET');
                 }
             };
             $("tr").click(function() {

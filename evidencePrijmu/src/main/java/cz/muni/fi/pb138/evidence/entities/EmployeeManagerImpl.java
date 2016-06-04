@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.xmldb.api.base.XMLDBException;
 import cz.muni.fi.pb138.evidence.xmlEdit.ExecuteQuery;
 
@@ -214,7 +215,7 @@ public class EmployeeManagerImpl implements EmployeeManager {
         employee.setName(resultArray[1]);
         employee.setSurname(resultArray[2]);
         employee.setAddress(resultArray[3]);
-        employee.setPostCode(Integer.parseInt(resultArray[4]));
+        employee.setPostCode(resultArray[4]);
         employee.setCity(resultArray[5]);
         employee.setActive(Boolean.parseBoolean(resultArray[6]));
 //        System.out.println(employee.toString());

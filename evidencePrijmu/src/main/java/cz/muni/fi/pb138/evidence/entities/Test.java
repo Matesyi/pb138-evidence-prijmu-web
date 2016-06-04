@@ -15,7 +15,7 @@ public class Test {
         employee.setName("Pavel");
         employee.setSurname("Novák");
         employee.setAddress("Pěkná Ulice 4");
-        employee.setPostCode(11002);
+        employee.setPostCode("11002");
         employee.setCity("Brno");
         return employee;
     }
@@ -40,7 +40,7 @@ public class Test {
         employee.setName("Unknown");
         employee.setSurname("Anonymus");
         employee.setAddress("Pěkná Ulice 4");
-        employee.setPostCode(11002);
+        employee.setPostCode("11002");
         employee.setCity("Brno");
         employee.setPersonal_number(3);//choose some number according to database content
         return employee;

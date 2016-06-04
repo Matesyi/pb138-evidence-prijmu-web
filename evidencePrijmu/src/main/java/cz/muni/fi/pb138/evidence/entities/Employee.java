@@ -12,7 +12,7 @@ public class Employee {
     private String name;
     private String surname;
     private String address;
-    private int postCode;
+    private String postCode;
     private String city;
     private boolean active=true;
 
@@ -32,11 +32,11 @@ public class Employee {
         this.address = address;
     }
 
-    public int getPostCode() {
+    public String getPostCode() {
         return postCode;
     }
 
-    public void setPostCode(int postCode) {
+    public void setPostCode(String postCode) {
         this.postCode = postCode;
     }
 

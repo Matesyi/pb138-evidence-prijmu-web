@@ -42,30 +42,7 @@ public class DatabaseBrowserServlet extends HttpServlet {
             String urlParts[] = url.split("/", 3);
             if (urlParts[1].equals("invoice-detail")) {
                 Invoice invoice = invoiceManager.getInvoiceById(Integer.parseInt(urlParts[2]));
-                JSONArray invoiceJsonArray = new JSONArray();
-                JSONObject object1 = new JSONObject();
-                object1.put("personal_number", invoice.getEmployee().getPersonal_number());
-                object1.put("name", invoice.getEmployee().getName());
-                object1.put("surname", invoice.getEmployee().getSurname());
-                object1.put("address", invoice.getEmployee().getAddress());
-                object1.put("post_code", invoice.getEmployee().getPostCode());
-                object1.put("city", invoice.getEmployee().getCity());
-                invoiceJsonArray.add(object1);
-                JSONObject object2 = new JSONObject();
-                object2.put("invoice_id", invoice.getId());
-                object2.put("date", invoice.getMonth() + "/" + invoice.getYear());
-                int priceSum = 0;
-                int iteration = 0;
-                for (Map.Entry<Work, Integer> entry : invoice.getWorks().entrySet()) {
-                    object2.put("work_type_"+Integer.toString(iteration), entry.getKey().getWork_type());
-                    object2.put("work_price_"+Integer.toString(iteration), entry.getKey().getPrice());
-                    priceSum += entry.getValue() * entry.getKey().getPrice();
-                    iteration++;
-                }
-                object2.put("workCount", iteration);
-                object2.put("price", priceSum);
-                invoiceJsonArray.add(object2);
-                req.setAttribute("invoiceJson", invoiceJsonArray);
+                req.setAttribute("invoiceJson", createInvoiceDetailJson(invoice));
                 RequestDispatcher view = req.getRequestDispatcher("/invoice-detail.jsp");
                 view.forward(req, resp);
             }
@@ -110,7 +87,7 @@ public class DatabaseBrowserServlet extends HttpServlet {
     }
 
     /**
-     * Create json string containing all active Employees
+     * Create json string containing all active Employees.
      *
      * @return json String
      */
@@ -122,7 +99,7 @@ public class DatabaseBrowserServlet extends HttpServlet {
 
 
     /**
-     * Return all invoices formatted in JSONArray
+     * Return all invoices formatted in JSONArray.
      *
      * @param invoices
      * @return JSONArray invoices
@@ -142,5 +119,43 @@ public class DatabaseBrowserServlet extends HttpServlet {
             invoicesJsonArray.add(object);
         }
         return invoicesJsonArray;
+    }
+
+    /**
+     * Create JSONArray for invoice detail.
+     *
+     * @param invoice from which is created JSON Array
+     * @return JSONArray in format specified in api
+     */
+    private JSONArray createInvoiceDetailJson(Invoice invoice) {
+        JSONArray invoiceJsonArray = new JSONArray();
+        JSONObject object1 = new JSONObject();
+        object1.put("personal_number", invoice.getEmployee().getPersonal_number());
+        object1.put("name", invoice.getEmployee().getName());
+        object1.put("surname", invoice.getEmployee().getSurname());
+        object1.put("address", invoice.getEmployee().getAddress());
+        object1.put("post_code", invoice.getEmployee().getPostCode());
+        object1.put("city", invoice.getEmployee().getCity());
+        invoiceJsonArray.add(object1);
+        JSONObject object2 = new JSONObject();
+        object2.put("invoice_id", invoice.getId());
+        object2.put("date", invoice.getMonth() + "/" + invoice.getYear());
+        int priceSum = 0;
+        for (Map.Entry<Work, Integer> entry : invoice.getWorks().entrySet())
+            priceSum += entry.getValue() * entry.getKey().getPrice();
+        object2.put("price", priceSum);
+        invoiceJsonArray.add(object2);
+        JSONArray workArray = new JSONArray();
+        for (Map.Entry<Work, Integer> entry : invoice.getWorks().entrySet()) {
+            JSONObject workJson = new JSONObject();
+            workJson.put("work_type", entry.getKey().getWork_type());
+            workJson.put("work_price", entry.getKey().getPrice());
+            workJson.put("work_amount", entry.getValue());
+            workArray.add(workJson);
+        }
+        JSONObject object3 = new JSONObject();
+        object3.put("works", workArray);
+        invoiceJsonArray.add(object3);
+        return invoiceJsonArray;
     }
 }
