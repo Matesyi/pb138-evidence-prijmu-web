@@ -138,7 +138,7 @@
             </div>
             <div class="row body-section">
                 <div class="col-md-4 col-md-offset-2">
-                    <form action="/transformation/docbook/${invoiceId}" method="post">
+                    <form id="generate-form" method="post">
                         <input type="text" name="invoice_id" hidden/>
                         <button type="submit" class="tile link-tile btn btn-block"><i class='fa fa-external-link'
                                                                                       aria-hidden='true'></i>&nbsp;&nbsp;&nbsp;Generate
@@ -159,7 +159,21 @@
              * data for invoice detail output
              * @type JSON
              */
-            var invoiceData = ${invoiceJson};
+            var invoiceData = [{
+        "address": "Sadova 24",
+        "city": "Adamov",
+        "surname": "Kotol",
+        "post_code": 67904,
+        "name": "Lukáš ",
+        "personal_number": 8
+    }, {"date": "6\/2016", "price": 555668000, "invoice_id": 6}, {
+        "works": [{
+            "work_price": 20,
+            "work_type": "test",
+            "work_amount": 100
+        }, {"work_price": 555666000, "work_type": "lukasedited", "work_amount":
+1}]
+    }];
 
             /**
              * function for filling the form of invoice
@@ -188,9 +202,14 @@
                             +(value.work_price * value.work_amount) +
                             "</td></tr>");
                 });
+                
+                $("#generate-form").attr("action", "/transformation/docbook/${invoiceId}");
             }
             
-            fillInvoiceData();
+            //call when it is ready
+            $( document ).ready(function() {
+                fillInvoiceData();
+            });
         </script>
     </body>
 </html>
