@@ -16,6 +16,7 @@ import javax.xml.stream.XMLStreamWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -69,7 +70,70 @@ public class TransformationServlet extends HttpServlet {
                 writer.close();
 
                 resp.sendRedirect("/transformations/invoice_docbook_tranformation.xml");
+            } else if (urlParts[2].equals("docbooks")) {
+
+                InvoiceManagerImpl invoiceManager = new InvoiceManagerImpl();
+
+                int personalNumber = 0;
+                if (!req.getParameter("personal_number_hidden").isEmpty())
+                    personalNumber = Integer.parseInt(req.getParameter("personal_number_hidden"));
+                String surname = req.getParameter("employee_surname_hidden");
+                int yearFrom = 1;
+                if (!req.getParameter("year_from_hidden").isEmpty())
+                    yearFrom = Integer.parseInt(req.getParameter("year_from_hidden"));
+                int monthFrom = 0;
+                if (!req.getParameter("month_from_hidden").isEmpty())
+                    monthFrom = Integer.parseInt(req.getParameter("month_from_hidden"));
+                int yearTo = 99999;
+                if (!req.getParameter("year_to_hidden").isEmpty())
+                    yearTo = Integer.parseInt(req.getParameter("year_to_hidden"));
+                int monthTo = 0;
+                if (!req.getParameter("month_to_hidden").isEmpty())
+                    monthTo = Integer.parseInt(req.getParameter("month_to_hidden"));
+
+                List<Invoice> invoices = invoiceManager.findInvoicesByFilter(personalNumber, surname, yearFrom, monthFrom, yearTo, monthTo);
+
+                if (invoices.size() <= 0) {
+                    resp.sendRedirect("/database-browser");
+                }
+                StringWriter stringWriter = new StringWriter();
+                XMLOutputFactory xMLOutputFactory = XMLOutputFactory.newInstance();
+                XMLStreamWriter xMLStreamWriter = xMLOutputFactory.createXMLStreamWriter(stringWriter);
+
+                xMLStreamWriter.writeStartDocument();
+                xMLStreamWriter.writeStartElement("article");
+
+                xMLStreamWriter.writeStartElement("articleinfo");
+
+                xMLStreamWriter.writeStartElement("title");
+                xMLStreamWriter.writeCharacters("Invoice");
+                xMLStreamWriter.writeEndElement();
+
+//                xMLStreamWriter.writeStartElement("author");
+//                xMLStreamWriter.writeCharacters(invoices.get(0).getEmployer());
+//                xMLStreamWriter.writeEndElement();
+
+                xMLStreamWriter.writeEndElement();
+                for (Invoice invoice : invoices) {
+                    generateInvoice(xMLStreamWriter, invoice);
+                }
+
+                xMLStreamWriter.writeEndElement();
+                xMLStreamWriter.writeEndDocument();
+
+                xMLStreamWriter.flush();
+                xMLStreamWriter.close();
+
+                String xmlString = stringWriter.getBuffer().toString();
+
+                stringWriter.close();
+                PrintWriter writer = new PrintWriter("./src/main/webapp/transformations/invoice_docbook_tranformation.xml", "UTF-8");
+                writer.print(xmlString);
+                writer.close();
+
+                resp.sendRedirect("/transformations/invoice_docbook_tranformation.xml");
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

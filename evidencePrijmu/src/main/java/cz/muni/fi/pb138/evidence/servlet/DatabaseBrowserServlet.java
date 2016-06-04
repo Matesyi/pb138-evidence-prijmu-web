@@ -34,6 +34,12 @@ public class DatabaseBrowserServlet extends HttpServlet {
         if (url.equals("/database-browser")) {
             req.setAttribute("employeesJson", getActiveEmployeesJson());
             List<Invoice> invoices = invoiceManager.findInvoicesByFilter(0, null, 1950, 0, 3000, 0);
+            req.setAttribute("personal_number", 0);
+            req.setAttribute("employee_surname", "null");
+            req.setAttribute("year_from", 1950);
+            req.setAttribute("month_from", 0);
+            req.setAttribute("year_to", 3000);
+            req.setAttribute("month_to", 0);
             req.setAttribute("invoicesJson", getInvoicesJson(invoices));
             RequestDispatcher view = req.getRequestDispatcher("/database-browser.jsp");
             view.forward(req, resp);
@@ -83,6 +89,12 @@ public class DatabaseBrowserServlet extends HttpServlet {
         }
         InvoiceManagerImpl invoiceManager = new InvoiceManagerImpl();
         List<Invoice> invoices = invoiceManager.findInvoicesByFilter(personalNumber, surname, yearFrom, monthFrom, yearTo, monthTo);
+        req.setAttribute("personal_number", personalNumber);
+        req.setAttribute("employee_surname", surname);
+        req.setAttribute("year_from", yearFrom);
+        req.setAttribute("month_from", monthFrom);
+        req.setAttribute("year_to", yearTo);
+        req.setAttribute("month_to", monthTo);
         req.setAttribute("invoicesJson", getInvoicesJson(invoices));
         RequestDispatcher view = req.getRequestDispatcher("/database-browser.jsp");
         view.forward(req, resp);
@@ -158,8 +170,6 @@ public class DatabaseBrowserServlet extends HttpServlet {
         JSONObject object3 = new JSONObject();
         object3.put("works", workArray);
         invoiceJsonArray.add(object3);
-        DocBookCodeGenerator docBookCodeGenerator = new DocBookCodeGenerator();
-
         return invoiceJsonArray;
     }
 }

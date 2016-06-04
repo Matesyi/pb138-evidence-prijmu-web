@@ -159,21 +159,7 @@
              * data for invoice detail output
              * @type JSON
              */
-            var invoiceData = [{
-        "address": "Sadova 24",
-        "city": "Adamov",
-        "surname": "Kotol",
-        "post_code": 67904,
-        "name": "Lukáš ",
-        "personal_number": 8
-    }, {"date": "6\/2016", "price": 555668000, "invoice_id": 6}, {
-        "works": [{
-            "work_price": 20,
-            "work_type": "test",
-            "work_amount": 100
-        }, {"work_price": 555666000, "work_type": "lukasedited", "work_amount":
-1}]
-    }];
+            var invoiceData = ${invoiceJson}
 
             /**
              * function for filling the form of invoice
