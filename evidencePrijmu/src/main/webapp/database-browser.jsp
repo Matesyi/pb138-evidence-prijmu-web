@@ -100,12 +100,6 @@
             </div>
             <div class="col-md-6 col-md-offset-3">
                 <form action="/transformation/docbooks" method="post">
-                    <input type="hidden" name="personal_number_hidden" val="${personal_number}">
-                    <input type="hidden" name="employee_surname_hidden" val="${employee_surname}">
-                    <input type="hidden" name="year_from_hidden" val="${year_from}">
-                    <input type="hidden" name="month_from_hidden" val="${month_from}">
-                    <input type="hidden" name="year_to_hidden" val="${year_to}">
-                    <input type="hidden" name="month_to_hidden" val="${month_to}">
                 <button type="submit" class="tile link-tile btn btn-block" onClick="" title="generate output from showed invoices"><i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Generate output from showed invoices</button>
                 </form>
             </div>

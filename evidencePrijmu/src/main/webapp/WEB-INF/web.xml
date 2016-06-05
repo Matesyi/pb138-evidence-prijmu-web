@@ -123,6 +123,10 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TransformationServlet</servlet-name>
+        <url-pattern>/transformation/pdf/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TransformationServlet</servlet-name>
         <url-pattern>/transformation/docbooks</url-pattern>
     </servlet-mapping>
 

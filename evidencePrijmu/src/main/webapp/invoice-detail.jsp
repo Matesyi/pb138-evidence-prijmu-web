@@ -138,11 +138,18 @@
             </div>
             <div class="row body-section">
                 <div class="col-md-4 col-md-offset-2">
-                    <form id="generate-form" method="post">
+                    <form id="generate-form-docbook" method="post" action="/transformation/docbook/${invoiceId}">
                         <input type="text" name="invoice_id" hidden/>
                         <button type="submit" class="tile link-tile btn btn-block"><i class='fa fa-external-link'
                                                                                       aria-hidden='true'></i>&nbsp;&nbsp;&nbsp;Generate
-                            to file
+                            to DocBook
+                        </button>
+                    </form>
+                    <form id="generate-form-pdf" method="post" action="/transformation/pdf/${invoiceId}">
+                        <input type="text" name="invoice_id" hidden/>
+                        <button type="submit" class="tile link-tile btn btn-block"><i class='fa fa-external-link'
+                                                                                      aria-hidden='true'></i>&nbsp;&nbsp;&nbsp;Generate
+                            to PDF
                         </button>
                     </form>
                 </div>

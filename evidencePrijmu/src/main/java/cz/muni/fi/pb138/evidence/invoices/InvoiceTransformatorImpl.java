@@ -42,6 +42,7 @@ public class InvoiceTransformatorImpl implements InvoiceTransformator {
     
     @Override
     public void storeInvoiceDocbook(Invoice invoice) {
+        // bohuzel chyby metoda putResource, s kterou mi to nejede!
 //        try {
 //            String invoiceDocbookXmlStr = transformToDocbook(invoice);
 //            String file = FILE_NAME + invoice.getId() + ".xml";
@@ -50,7 +51,7 @@ public class InvoiceTransformatorImpl implements InvoiceTransformator {
 //            throw new InvoiceException("Error storing invoice docbook.", e);
 //        }
     }
-    
+
     @Override
     public void storeInvoicePdf(Invoice invoice, File f) {
         try (FileOutputStream fos = new FileOutputStream(f)) {
@@ -66,6 +67,7 @@ public class InvoiceTransformatorImpl implements InvoiceTransformator {
             String dbFile = FILE_NAME + invoice.getId() + ".xml";
 
             if (ExecuteQuery.executeQuery("fn:doc-available(\"" + dbFile + "\")").equals("true")) {
+                // bohuzel chyby metoda collectionPath, s kterou mi to nejede!
 //                String url = "http://localhost:8080/exist/rest" + ExecuteQuery.collectionPath + "/" + dbFile;
 //                return url;
             }
@@ -90,7 +92,7 @@ public class InvoiceTransformatorImpl implements InvoiceTransformator {
 
             xsw.writeStartDocument("UTF-8", "1.0");
             xsw.writeStartElement("article");
-            
+            xsw.writeAttribute("xml:lang", "en");
             xsw.writeDefaultNamespace("http://docbook.org/ns/docbook");
             xsw.writeNamespace("xlink", "http://www.w3.org/1999/xlink");
             xsw.writeNamespace("xi", "http://www.w3.org/2001/XInclude");
@@ -276,10 +278,10 @@ public class InvoiceTransformatorImpl implements InvoiceTransformator {
 
                 // disabling table of content
                 xsltTrans.setParameter(new QName("generate.toc"), new XdmAtomicValue("article nop"));
-                
+
                 // transforming to docbook
                 String docbook = transformToDocbook(invoice);
-                
+
                 // setting source and destination
                 xsltTrans.setSource(new StreamSource(new StringReader(docbook)));
                 xsltTrans.setDestination(des);

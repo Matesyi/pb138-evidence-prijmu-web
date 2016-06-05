@@ -33,13 +33,7 @@ public class DatabaseBrowserServlet extends HttpServlet {
         // show all invoices
         if (url.equals("/database-browser")) {
             req.setAttribute("employeesJson", getActiveEmployeesJson());
-            List<Invoice> invoices = invoiceManager.findInvoicesByFilter(0, null, 1950, 0, 3000, 0);
-            req.setAttribute("personal_number", 0);
-            req.setAttribute("employee_surname", "null");
-            req.setAttribute("year_from", 1950);
-            req.setAttribute("month_from", 0);
-            req.setAttribute("year_to", 3000);
-            req.setAttribute("month_to", 0);
+            List<Invoice> invoices = invoiceManager.findInvoicesByFilter(0, null, 1, 0, 999999, 0);
             req.setAttribute("invoicesJson", getInvoicesJson(invoices));
             RequestDispatcher view = req.getRequestDispatcher("/database-browser.jsp");
             view.forward(req, resp);
@@ -64,7 +58,7 @@ public class DatabaseBrowserServlet extends HttpServlet {
      * @throws IOException
      */
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("employeesJson", getActiveEmployeesJson());
+        // parse all post data to search values
         String personalNumberString = req.getParameter("employee");
         int personalNumber = 0;
         if (personalNumberString != null)
@@ -72,7 +66,7 @@ public class DatabaseBrowserServlet extends HttpServlet {
         String surname = req.getParameter("employee_surname");
 
         String dateFromInput = req.getParameter("date_from");
-        int yearFrom = 1000;
+        int yearFrom = 1;
         int monthFrom = 0;
         if (!dateFromInput.isEmpty()) {
             String dateFrom[] = dateFromInput.split("/");
@@ -83,19 +77,16 @@ public class DatabaseBrowserServlet extends HttpServlet {
         int yearTo = 99999;
         int monthTo = 0;
         if (!dateToInput.isEmpty()) {
-            String dateTo[] = dateFromInput.split("/");
+            String dateTo[] = dateToInput.split("/");
             yearTo = Integer.parseInt(dateTo[0]);
             monthTo = Integer.parseInt(dateTo[1]);
         }
+
+        // find all employee by search values
         InvoiceManagerImpl invoiceManager = new InvoiceManagerImpl();
         List<Invoice> invoices = invoiceManager.findInvoicesByFilter(personalNumber, surname, yearFrom, monthFrom, yearTo, monthTo);
-        req.setAttribute("personal_number", personalNumber);
-        req.setAttribute("employee_surname", surname);
-        req.setAttribute("year_from", yearFrom);
-        req.setAttribute("month_from", monthFrom);
-        req.setAttribute("year_to", yearTo);
-        req.setAttribute("month_to", monthTo);
         req.setAttribute("invoicesJson", getInvoicesJson(invoices));
+        req.setAttribute("employeesJson", getActiveEmployeesJson());
         RequestDispatcher view = req.getRequestDispatcher("/database-browser.jsp");
         view.forward(req, resp);
     }
@@ -172,4 +163,5 @@ public class DatabaseBrowserServlet extends HttpServlet {
         invoiceJsonArray.add(object3);
         return invoiceJsonArray;
     }
+
 }
