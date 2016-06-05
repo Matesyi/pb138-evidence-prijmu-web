@@ -46,10 +46,10 @@ public class DatabaseBrowserServlet extends HttpServlet {
 
         } else {
             // show request invoice detail
-            String urlParts[] = url.split("/", 2);
-            if (urlParts[1].contains("invoice-detail")) {
-                Invoice invoice = invoiceManager.getInvoiceById(Integer.parseInt(req.getParameter("id")));
-                req.setAttribute("invoiceId", invoice.getId());
+            String urlParts[] = url.split("/", 3);
+            if (urlParts[1].equals("invoice-detail")) {
+                Invoice invoice = invoiceManager.getInvoiceById(Integer.parseInt(urlParts[2]));
+                req.setAttribute("invoiceId", urlParts[2]);
                 req.setAttribute("invoiceJson", createInvoiceDetailJson(invoice));
                 RequestDispatcher view = req.getRequestDispatcher("/invoice-detail.jsp");
                 view.forward(req, resp);

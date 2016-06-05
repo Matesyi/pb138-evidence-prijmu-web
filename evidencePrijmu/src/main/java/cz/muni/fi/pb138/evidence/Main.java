@@ -1,6 +1,5 @@
 package cz.muni.fi.pb138.evidence;
 
-import cz.muni.fi.pb138.evidence.xmlEdit.ExecuteQuery;
 import java.net.URI;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
@@ -20,14 +19,11 @@ public class Main
 
         int serverPort = 8090;
         main.startJetty(serverPort);
-        
-        // initializing exist-db
-        ExecuteQuery.initCollection();
-        
+
         if (Desktop.isDesktopSupported()) {
             Desktop.getDesktop().browse(new URI("http://localhost:" + serverPort + "/"));
         }
-        
+
         // stops server with any key
         System.in.read();
         main.stopJetty();

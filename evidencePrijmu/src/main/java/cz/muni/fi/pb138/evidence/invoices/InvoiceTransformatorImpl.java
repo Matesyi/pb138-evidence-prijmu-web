@@ -42,13 +42,13 @@ public class InvoiceTransformatorImpl implements InvoiceTransformator {
     
     @Override
     public void storeInvoiceDocbook(Invoice invoice) {
-        try {
-            String invoiceDocbookXmlStr = transformToDocbook(invoice);
-            String file = FILE_NAME + invoice.getId() + ".xml";
-            ExecuteQuery.putResource(file, invoiceDocbookXmlStr);
-        } catch (XMLDBException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-            throw new InvoiceException("Error storing invoice docbook.", e);
-        }
+//        try {
+//            String invoiceDocbookXmlStr = transformToDocbook(invoice);
+//            String file = FILE_NAME + invoice.getId() + ".xml";
+////            ExecuteQuery.putResource(file, invoiceDocbookXmlStr);
+//        } catch (XMLDBException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+//            throw new InvoiceException("Error storing invoice docbook.", e);
+//        }
     }
     
     @Override
@@ -66,8 +66,8 @@ public class InvoiceTransformatorImpl implements InvoiceTransformator {
             String dbFile = FILE_NAME + invoice.getId() + ".xml";
 
             if (ExecuteQuery.executeQuery("fn:doc-available(\"" + dbFile + "\")").equals("true")) {
-                String url = "http://localhost:8080/exist/rest" + ExecuteQuery.collectionPath + "/" + dbFile;
-                return url;
+//                String url = "http://localhost:8080/exist/rest" + ExecuteQuery.collectionPath + "/" + dbFile;
+//                return url;
             }
             return null;
         }

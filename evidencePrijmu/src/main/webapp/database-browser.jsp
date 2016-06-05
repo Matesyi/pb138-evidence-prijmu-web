@@ -169,7 +169,7 @@
     $("tr").click(function() {
         var detailId = $(this).children(":first").text()
         if(!isNaN(detailId))
-            $("#detailButton").attr("href", "invoice-detail?id=" + detailId);
+            $("#detailButton").attr("href", "invoice-detail/" + detailId);
     });
 </script>
 
