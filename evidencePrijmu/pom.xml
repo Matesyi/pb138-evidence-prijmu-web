@@ -69,13 +69,9 @@
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>fop</artifactId>
-            <version>1.0</version>
+            <version>2.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.docbook</groupId>
-            <artifactId>docbook-xsl</artifactId>
-            <version>1.72.0</version>
-        </dependency>
+        
         <!-- EXIST DB dependencies -->
         
         <dependency>
@@ -198,6 +194,17 @@
             <artifactId>gson</artifactId>
             <version>2.2.2</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.saxon</groupId>
+            <artifactId>Saxon-HE</artifactId>
+            <version>9.7.0-5</version>
+        </dependency>
+        <dependency>
+            <groupId>docbook</groupId>
+            <artifactId>docbook-xsl</artifactId>
+            <version>1.72.0</version>
+            <type>pom</type>
         </dependency>
     </dependencies>
     
