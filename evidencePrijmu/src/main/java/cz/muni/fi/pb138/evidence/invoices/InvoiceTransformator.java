@@ -1,7 +1,6 @@
 package cz.muni.fi.pb138.evidence.invoices;
 
 import cz.muni.fi.pb138.evidence.entities.Invoice;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 /**

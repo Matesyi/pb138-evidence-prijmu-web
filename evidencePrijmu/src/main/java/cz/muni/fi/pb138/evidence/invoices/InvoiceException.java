@@ -1,7 +1,7 @@
 package cz.muni.fi.pb138.evidence.invoices;
 
 /**
- *
+ * Uniform exception for transformating invoices.
  * @author Miloš Šilhár
  */
 public class InvoiceException extends RuntimeException {
