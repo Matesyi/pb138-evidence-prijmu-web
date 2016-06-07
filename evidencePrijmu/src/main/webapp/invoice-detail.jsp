@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@include file="components/header.html" %>
+        <%@include file="components/nested-header.html" %>
         <title>Invoice detail | Income Recording Application</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
@@ -160,7 +160,7 @@
             </div>
         </div>
 
-        <%@include file="components/footer.html" %>
+        <%@include file="components/nested-footer.html" %>
         <script>
             /**
              * data for invoice detail output
@@ -195,8 +195,6 @@
                             +(value.work_price * value.work_amount) +
                             "</td></tr>");
                 });
-                
-                $("#generate-form").attr("action", "/transformation/docbook/" + invoiceData[1].invoice_id);
             }
             
             //call when it is ready

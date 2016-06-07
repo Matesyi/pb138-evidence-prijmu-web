@@ -1,0 +1,46 @@
+<div class="footer">
+    <p>Project to PB138 Modern Markup Languages and Their Applications (spring 2016). Project is under MIT License.</p>
+    <p>Realization team: Matej Karolyi, Lukas Kotol, Milos Silhar, Lumir Skvaril ; 2016</p> 
+</div>
+
+<!--jQuery-->
+<script src="../vendor/jquery/jquery-2.2.3.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../vendor/bootstrap/bootstrap.min.js"></script>
+<!--Simple data grid-->
+<script src="../vendor/simple-data-grid-master/simple.datagrid.js"></script>
+<!--jQuery redirect extension-->
+<script src="../vendor/jquery.redirect-master/jquery.redirect.js"></script>
+<!--jQuery redirect extension-->
+<script src="../vendor/jquery-ui-custom/jquery-ui.min.js"></script>
+
+<script>
+    /**
+     * function to parse the url parameters after qustin mark
+     * @param {string} urlParams
+     * @returns {string}
+     */
+    function parseGetParameters(urlParams) {
+        var query = {};
+        var a = urlParams.substr(1).split('&');
+        for (var i = 0; i < a.length; i++) {
+            var b = a[i].split('=');
+            query[decodeURIComponent(b[0])] = decodeURIComponent(b[1].replace("+", " ") || '');
+        }
+        return query;
+    }
+    ;
+
+    //date picker options
+    $(function () {
+        $('.date-picker').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'yy/mm',
+            onClose: function (dateText, inst) {
+                $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+            }
+        });
+    });
+</script>
