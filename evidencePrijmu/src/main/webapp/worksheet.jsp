@@ -56,7 +56,7 @@
                             </select>
                         </div>
                         <div class="col-xs-6 col-md-4">
-                            <input type="text" name="work_amount-1" class="form-control" placeholder="amount of working hours" required />
+                            <input type="number" min="0" step="1" name="work_amount-1" class="form-control" placeholder="amount of working hours" required />
                         </div>
                         <input type="hidden" name="workCount" value="1" id="workCount">
                     </div>
@@ -139,7 +139,7 @@
                                             </select>\n\
                                         </div>\n\
                                         <div class='col-xs-6 col-md-4'>\n\
-                                            <input type='text' name='work_amount-" + numberOfWorkRows + "' class='form-control' placeholder='amount of working hours' required />\n\
+                                            <input type='number' min='0' step='1' name='work_amount-" + numberOfWorkRows + "' class='form-control' placeholder='amount of working hours' required />\n\
                                         </div>\n\
                                     </div>"));
         //fill added select box

@@ -35,7 +35,7 @@
                         <div class="col-md-6 col-md-offset-3">
                             <label class="input-label">
                                 <h4>Price</h4>
-                                <input type="text" name="price" class="form-control" required />
+                                <input type="number" min="0" step="1" name="price" class="form-control" required />
                             </label>
                         </div>
                         <input type="hidden" name="work_id" value="" />
