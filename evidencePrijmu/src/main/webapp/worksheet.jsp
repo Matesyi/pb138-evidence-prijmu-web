@@ -29,7 +29,7 @@
                 <div class="col-md-6 col-md-offset-3">
                     <label class="input-label">
                         <h4>Employee</h4>
-                        <select name='employee' id='employee-select' class='form-control'>
+                        <select name='employee' id='employee-select' class='form-control' required>
                             <option value="" disabled selected>--- Select the employee ---</option>
                         </select>
                     </label>
@@ -38,7 +38,7 @@
                     <label class="input-label">
                         <label class="input-label">
                             <h4>Date</h4>
-                            <input name="date" id="date" class="date-picker form-control" />
+                            <input name="date" id="date" class="date-picker form-control" required />
                         </label>
                     </label>
                 </div>
@@ -51,12 +51,12 @@
                 <div id="work-holder" class="col-md-12">
                     <div id="work-1" class="row">
                         <div class="col-xs-6 col-md-4 col-md-offset-2">
-                            <select id='work-type-1' name='work_type-1' class='form-control'>
+                            <select id='work-type-1' name='work_type-1' class='form-control' required >
                                 <option value="" disabled selected>--- Select the work type ---</option>
                             </select>
                         </div>
                         <div class="col-xs-6 col-md-4">
-                            <input type="text" name="work_amount-1" class="form-control" placeholder="amount of working hours" />
+                            <input type="text" name="work_amount-1" class="form-control" placeholder="amount of working hours" required />
                         </div>
                         <input type="hidden" name="workCount" value="1" id="workCount">
                     </div>
@@ -134,12 +134,12 @@
         $("#work-holder")
                 .append($("<div id='work-" + numberOfWorkRows + "' class='row'>\n\
                                         <div class='col-xs-6 col-md-4 col-md-offset-2'>\n\
-                                            <select id='work-type-" + numberOfWorkRows + "' name='work_type-" + numberOfWorkRows + "' class='form-control'>\n\
+                                            <select id='work-type-" + numberOfWorkRows + "' name='work_type-" + numberOfWorkRows + "' class='form-control' required >\n\
                                                 <option value='' disabled selected>--- Select the work type ---</option>\n\
                                             </select>\n\
                                         </div>\n\
                                         <div class='col-xs-6 col-md-4'>\n\
-                                            <input type='text' name='work_amount-" + numberOfWorkRows + "' class='form-control' placeholder='amount of working hours' />\n\
+                                            <input type='text' name='work_amount-" + numberOfWorkRows + "' class='form-control' placeholder='amount of working hours' required />\n\
                                         </div>\n\
                                     </div>"));
         //fill added select box

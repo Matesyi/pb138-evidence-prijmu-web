@@ -29,13 +29,13 @@
                         <div class="col-md-6 col-md-offset-3">
                             <label class="input-label">
                                 <h4>Work Type</h4>
-                                <input type="text" name="work_type" class="form-control" />
+                                <input type="text" name="work_type" class="form-control" required />
                             </label>
                         </div>
                         <div class="col-md-6 col-md-offset-3">
                             <label class="input-label">
                                 <h4>Price</h4>
-                                <input type="text" name="price" class="form-control" />
+                                <input type="text" name="price" class="form-control" required />
                             </label>
                         </div>
                         <input type="hidden" name="work_id" value="" />

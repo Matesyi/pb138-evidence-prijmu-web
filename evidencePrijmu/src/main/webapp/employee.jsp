@@ -35,31 +35,31 @@
                         <div class="col-md-6 col-md-offset-3">
                             <label class="input-label">
                                 <h4>Name</h4>
-                                <input type="text" name="name" class="form-control" />
+                                <input type="text" name="name" class="form-control" required />
                             </label>
                         </div>
                         <div class="col-md-6 col-md-offset-3">
                             <label class="input-label">
                                 <h4>Surname</h4>
-                                <input type="text" name="surname" class="form-control" />
+                                <input type="text" name="surname" class="form-control" required />
                             </label>
                         </div>
                         <div class="col-md-6 col-md-offset-3">
                             <label class="input-label">
                                 <h4>Address (street name & number)</h4>
-                                <input type="text" name="address" class="form-control" />
+                                <input type="text" name="address" class="form-control" required />
                             </label>
                         </div>
                         <div class="col-md-3 col-md-offset-3">
                             <label class="input-label">
                                 <h4>City</h4>
-                                <input type="text" name="city" class="form-control" />
+                                <input type="text" name="city" class="form-control" required />
                             </label>
                         </div>
                         <div class="col-md-3">
                             <label class="input-label">
                                 <h4>Post Code</h4>
-                                <input type="text" name="post_code" class="form-control" />
+                                <input type="text" name="post_code" class="form-control" required />
                             </label>
                         </div>
                     </div>
