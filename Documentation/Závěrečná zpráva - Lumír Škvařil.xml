@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article version="5.0" xml:lang="cz" xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <info>
+    <title>Evidence příjmů (Web) - závěrečná zpráva</title>
+
+    <author>
+      <personname><firstname>Mgr.
+      Lumír</firstname><surname>Škvařil</surname></personname>
+
+      <affiliation>
+        <orgname>PB138 Moderní značkovací jazyky a jejich aplikace</orgname>
+      </affiliation>
+    </author>
+
+    <pubdate>07.06.2016</pubdate>
+  </info>
+
+  <para>Zpravoval jsem aplikační logiku v jazyce java pro práci s
+  <acronym>xml</acronym> databází. To zahrnuje vytvoření potřebných objektů
+  entit a jejich manažerů se základnímu CRUD operacemi, které
+  zprostředkovávají výměnu informací mezi těmito objekty a xml databází. Jako
+  databázi využívám nativní xml databázi <application>eXist</application>.
+  Prvním krokem bylo vložení správně strukturovaného iniciačního xml souboru
+  do databáze (jeho kopii lze nalézt v soborech na Githubu jako
+  <classname>WorkEvidenceInit</classname>). Dále potom již v jazyce java
+  vytvoření metody, která zajišťuje provedení xquery dotazů na tomto souboru v
+  <application>eXist</application> databázi. K tomuto účelu jsem vytvořil
+  metodu, která je volána při každé databázové operaci, přičemž jejím
+  parametrem je String obsahující daný xquery dotaz.</para>
+
+  <para>Pro potřeby správné funkčnosti jsem definoval následující tři
+  entity:</para>
+
+  <itemizedlist>
+    <listitem>
+      <para><classname>Work</classname>. Tato entita představuje typ práce,
+      definovaný jednoznačným id, dále mající název a cenu za hodinu.</para>
+    </listitem>
+
+    <listitem>
+      <para><classname>Employee</classname>. Entita předtsavující zaměstnance.
+      Zaměstnance je opět jednoznačně určitelný svým id. Dále obsahuje
+      upřesňující atributy jako je jméno či adresa a nakonec boolen příznak
+      active, který slouží pro alternativní možnost operace delete. Místo
+      smazání zaměstnance je možné pouze přepnout jeho příznak active na
+      false.</para>
+    </listitem>
+
+    <listitem>
+      <para>Komplexní entitou, která vše kombinuje, je entita
+      <classname>Invoice</classname>. Ta zároveň slouží jako záznam odvedené
+      práce pro jednoho zaměstnance pro období jednoho měsíce. Je opět
+      identifikována unikátním číslem id. Jejími dalšími atributy jsou potom
+      období (mm/rrrr), zaměstnanec typu <classname>Employee</classname> a
+      seznam odvedených prací tyou <classname>Work</classname> s počtem hodin
+      u každého typu práce. Tento seznam je realizován pomocí mapy, kde
+      objekty <classname>Work</classname> jsou klíče a počty hodin jsou
+      hodnoty.</para>
+    </listitem>
+  </itemizedlist>
+
+  <para>Každá entita má v javě tři objekty. Vlastní entitu, kde jsou
+  definovány její atributy, <methodname>set</methodname> a
+  <methodname>get</methodname> metody, <methodname>equals</methodname>,
+  <methodname>hashCode</methodname> a <methodname>toString</methodname>. Dále
+  rozhraní, kde jsou definovány metody nad touto entitou. A nakonec
+  nejkomplexnější třídu, která implementuje dané rozhraní a obsahuje kódy CRUD
+  metod. Generováni čísel id pro všechny tři entity je typu autoincrement bez
+  recyklace. K tomuto účelu jsem vytvořil metodu pro výpočet aktuálního id u
+  každé entity. Tato metoda je volána vždy v rámci metody vytvoření nové
+  entity, tj. jejího vložení do databáze. Pro retrieve metody používám
+  standardní xquery. Pro metody create, update a delete potom využívám
+  extended xquery, se kterým dokáže <application>eXist</application> databáze
+  pracovat. Jako vstup své části přijímám naplněné objekty definovaných entit,
+  kterými následně modifikuji databázi a jako výstup vracím takovéto objekty
+  naplněné daty z databáze podle zvolených filtrů.</para>
+</article>

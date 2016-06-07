@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article version="5.0" xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <info>
+    <title>Evidence příjmů (Web) - závěrečná zpráva</title>
+
+    <author>
+      <personname><firstname>Bc.
+      Matěj</firstname><surname>Karolyi</surname></personname>
+
+      <affiliation>
+        <orgname>PB138 Moderní značkovací jazyky a jejich aplikace</orgname>
+      </affiliation>
+    </author>
+
+    <pubdate>07.06.2016</pubdate>
+  </info>
+
+  <para>V počátečních fázích jsem vydefinoval strukturu obrazovek pro
+  uživatelské rozhraní, což následovalo hned po určení základního
+  uživatelského workflow.</para>
+
+  <para>Založil jsem na svém Github účtu repozitář pro projekt a udělil práva
+  jak vývojářům tak vedoucím předmětu. Vytvořil jsem Wiki a GH Pages pro
+  projekt a během projektu jsem je také aktualizoval.</para>
+
+  <para>Částečně jsem se podílel na návrhu struktury datových entit pro
+  ukládání potřebných položek do databáze (zaměstnanci, typy prací,
+  faktury).</para>
+
+  <para>Navrhl jsem vzhled a rozložení jednotlivých obrazovek a zdokumentoval
+  strukturu vstupních a výstupních parametrů pro komunikaci mezi serverovou
+  částí a frontendem.</para>
+
+  <para>Pro finální obhajobu projektu jsem vytvořil prezentaci.</para>
+
+  <para>Pro svoji práci jsem využil primárně následující technologie, nástroje
+  a knihovny třetích stran:</para>
+
+  <itemizedlist>
+    <listitem>
+      <para>JavaServer Pages, HTML, CSS, JavaScript</para>
+    </listitem>
+
+    <listitem>
+      <para><application>NetBeans IDE 8.1</application>, <application>Jetty
+      9.3.8</application>, Preprocesor Less</para>
+    </listitem>
+
+    <listitem>
+      <para>Bootstrap, jQuery, jQueryUI, jQuery redirect, Simple Data
+      Grid</para>
+    </listitem>
+  </itemizedlist>
+</article>

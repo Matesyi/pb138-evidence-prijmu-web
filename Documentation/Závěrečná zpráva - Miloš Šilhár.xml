@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article lang="sk" version="5.0" xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <info>
+    <title>Evidence příjmů (Web) - závěrečná zpráva</title>
+
+    <author>
+      <personname>
+        <firstname>Miloš</firstname>
+
+        <surname>Šilhár</surname>
+      </personname>
+
+      <affiliation>
+        <orgname>PB138 Moderní značkovací jazyky a jejich aplikace</orgname>
+      </affiliation>
+    </author>
+
+    <pubdate>07.06.2016</pubdate>
+  </info>
+
+  <para>Na tomto projekte som mal na starosti generovanie faktúr z navrhnutej
+  entity Invoice na výstupné formáty, konktrétne tieto formáty boli docbook a
+  pdf.</para>
+
+  <para>Prvým krokom bolo navrhnutie docbook štruktúry v nástroji
+  <application>XMLmind</application>. Vytvorenú štruktúru som spracoval v java
+  kóde, kde ju dynamicky vytváram. Následne je táto štruktúra validovaná proti
+  XML schéme pre docbook v5.0.</para>
+
+  <para>Pre vytvorenie výstupu vo formáte pdf som použil napísane
+  transformačné štýly pre docbook. Pomocou nich je formát docbooku
+  pretransformovaný na XML-FO formát. Ten sa následne pretransformuje na
+  pdf.</para>
+
+  <para>Taktiež som sa podielal na prvotnom rozbehnutí Jetty servera,
+  nastavení podpory jsp súborov a ukážky použitia servletov. Pre exist
+  databázu som vytvoril lokálny maven repozitár pre potrebné jar súbory na
+  nadviazanie spojenia s databázov.</para>
+
+  <para>Použité technológie:</para>
+
+  <itemizedlist>
+    <listitem>
+      <para>Java</para>
+    </listitem>
+
+    <listitem>
+      <para>Docbook XSL Stylesheets, Docbook Schemas,
+      <trademark>Apache</trademark> FOP, Saxon-HE</para>
+    </listitem>
+
+    <listitem>
+      <para>Použité IDE: <application>Netbeans 8.1</application>,
+      <application>XMLmind</application></para>
+    </listitem>
+  </itemizedlist>
+</article>
