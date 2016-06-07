@@ -1,0 +1,42 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Evidence p&#345;íjm&#367; (Web) - záv&#283;re&#269;ná zpráva</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div lang="cs" class="article"><div class="titlepage"><div><div><h2 class="title"><a name="idm45562496349184"></a>Evidence p&#345;íjm&#367; (Web) - záv&#283;re&#269;ná zpráva</h2></div><div><div class="author"><h3 class="author"><span class="firstname">Mgr.
+      Lumír</span> <span class="surname">&#352;kva&#345;il</span></h3><div class="affiliation"><span class="orgname">PB138 Moderní zna&#269;kovací jazyky a jejich aplikace<br></span></div></div></div><div><p class="pubdate">07.06.2016</p></div></div><hr></div><p>Zpravoval jsem aplika&#269;ní logiku v jazyce java pro práci s
+  <acronym class="acronym">xml</acronym> databází. To zahrnuje vytvo&#345;ení pot&#345;ebných objekt&#367;
+  entit a jejich mana&#382;er&#367; se základnímu CRUD operacemi, které
+  zprost&#345;edkovávají vým&#283;nu informací mezi t&#283;mito objekty a xml databází. Jako
+  databázi vyu&#382;ívám nativní xml databázi <span class="application">eXist</span>.
+  Prvním krokem bylo vlo&#382;ení správn&#283; strukturovaného inicia&#269;ního xml souboru
+  do databáze (jeho kopii lze nalézt v soborech na Githubu jako
+  <code class="classname">WorkEvidenceInit</code>). Dále potom ji&#382; v jazyce java
+  vytvo&#345;ení metody, která zaji&#353;&#357;uje provedení xquery dotaz&#367; na tomto souboru v
+  <span class="application">eXist</span> databázi. K tomuto ú&#269;elu jsem vytvo&#345;il
+  metodu, která je volána p&#345;i ka&#382;dé databázové operaci, p&#345;i&#269;em&#382; jejím
+  parametrem je String obsahující daný xquery dotaz.</p><p>Pro pot&#345;eby správné funk&#269;nosti jsem definoval následující t&#345;i
+  entity:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="classname">Work</code>. Tato entita p&#345;edstavuje typ práce,
+      definovaný jednozna&#269;ným id, dále mající název a cenu za hodinu.</p></li><li class="listitem"><p><code class="classname">Employee</code>. Entita p&#345;edtsavující zam&#283;stnance.
+      Zam&#283;stnance je op&#283;t jednozna&#269;n&#283; ur&#269;itelný svým id. Dále obsahuje
+      up&#345;es&#328;ující atributy jako je jméno &#269;i adresa a nakonec boolen p&#345;íznak
+      active, který slou&#382;í pro alternativní mo&#382;nost operace delete. Místo
+      smazání zam&#283;stnance je mo&#382;né pouze p&#345;epnout jeho p&#345;íznak active na
+      false.</p></li><li class="listitem"><p>Komplexní entitou, která v&#353;e kombinuje, je entita
+      <code class="classname">Invoice</code>. Ta zárove&#328; slou&#382;í jako záznam odvedené
+      práce pro jednoho zam&#283;stnance pro období jednoho m&#283;síce. Je op&#283;t
+      identifikována unikátním &#269;íslem id. Jejími dal&#353;ími atributy jsou potom
+      období (mm/rrrr), zam&#283;stnanec typu <code class="classname">Employee</code> a
+      seznam odvedených prací tyou <code class="classname">Work</code> s po&#269;tem hodin
+      u ka&#382;dého typu práce. Tento seznam je realizován pomocí mapy, kde
+      objekty <code class="classname">Work</code> jsou klí&#269;e a po&#269;ty hodin jsou
+      hodnoty.</p></li></ul></div><p>Ka&#382;dá entita má v jav&#283; t&#345;i objekty. Vlastní entitu, kde jsou
+  definovány její atributy, <code class="methodname">set</code> a
+  <code class="methodname">get</code> metody, <code class="methodname">equals</code>,
+  <code class="methodname">hashCode</code> a <code class="methodname">toString</code>. Dále
+  rozhraní, kde jsou definovány metody nad touto entitou. A nakonec
+  nejkomplexn&#283;j&#353;í t&#345;ídu, která implementuje dané rozhraní a obsahuje kódy CRUD
+  metod. Generováni &#269;ísel id pro v&#353;echny t&#345;i entity je typu autoincrement bez
+  recyklace. K tomuto ú&#269;elu jsem vytvo&#345;il metodu pro výpo&#269;et aktuálního id u
+  ka&#382;dé entity. Tato metoda je volána v&#382;dy v rámci metody vytvo&#345;ení nové
+  entity, tj. jejího vlo&#382;ení do databáze. Pro retrieve metody pou&#382;ívám
+  standardní xquery. Pro metody create, update a delete potom vyu&#382;ívám
+  extended xquery, se kterým doká&#382;e <span class="application">eXist</span> databáze
+  pracovat. Jako vstup své &#269;ásti p&#345;ijímám napln&#283;né objekty definovaných entit,
+  kterými následn&#283; modifikuji databázi a jako výstup vracím takovéto objekty
+  napln&#283;né daty z databáze podle zvolených filtr&#367;.</p></div></body></html>

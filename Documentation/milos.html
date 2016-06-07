@@ -1,0 +1,14 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Evidence p&#345;íjm&#367; (Web) - záv&#283;re&#269;ná zpráva</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div lang="sk" class="article"><div class="titlepage"><div><div><h2 class="title"><a name="idm45109340943440"></a>Evidence p&#345;íjm&#367; (Web) - záv&#283;re&#269;ná zpráva</h2></div><div><div class="author"><h3 class="author"><span class="firstname">Milo&#353;</span> <span class="surname">&#352;ilhár</span></h3><div class="affiliation"><span class="orgname">PB138 Moderní zna&#269;kovací jazyky a jejich aplikace<br></span></div></div></div><div><p class="pubdate">07.06.2016</p></div></div><hr></div><p>Na tomto projekte som mal na starosti generovanie faktúr z navrhnutej
+  entity Invoice na výstupné formáty, konktrétne tieto formáty boli docbook a
+  pdf.</p><p>Prvým krokom bolo navrhnutie docbook &#353;truktúry v nástroji
+  <span class="application">XMLmind</span>. Vytvorenú &#353;truktúru som spracoval v java
+  kóde, kde ju dynamicky vytváram. Následne je táto &#353;truktúra validovaná proti
+  XML schéme pre docbook v5.0.</p><p>Pre vytvorenie výstupu vo formáte pdf som pou&#382;il napísane
+  transforma&#269;né &#353;týly pre docbook. Pomocou nich je formát docbooku
+  pretransformovaný na XML-FO formát. Ten sa následne pretransformuje na
+  pdf.</p><p>Taktie&#382; som sa podielal na prvotnom rozbehnutí Jetty servera,
+  nastavení podpory jsp súborov a uká&#382;ky pou&#382;itia servletov. Pre exist
+  databázu som vytvoril lokálny maven repozitár pre potrebné jar súbory na
+  nadviazanie spojenia s databázov.</p><p>Pou&#382;ité technológie:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>Java</p></li><li class="listitem"><p>Docbook XSL Stylesheets, Docbook Schemas,
+      <span class="trademark">Apache</span>&#8482; FOP, Saxon-HE</p></li><li class="listitem"><p>Pou&#382;ité IDE: <span class="application">Netbeans 8.1</span>,
+      <span class="application">XMLmind</span></p></li></ul></div></div></body></html>

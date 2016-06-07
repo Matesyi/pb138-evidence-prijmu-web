@@ -1,0 +1,13 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Evidence p&#345;íjm&#367; (Web) - záv&#283;re&#269;ná zpráva</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article"><div class="titlepage"><div><div><h2 class="title"><a name="idm45858350824480"></a>Evidence p&#345;íjm&#367; (Web) - záv&#283;re&#269;ná zpráva</h2></div><div><div class="author"><h3 class="author"><span class="firstname">Luká&#353;</span> <span class="surname">Kotol</span></h3><div class="affiliation"><span class="orgname">PB138 Moderní zna&#269;kovací jazyky a jejich aplikace<br></span></div></div></div><div><p class="pubdate">07.06.2016</p></div></div><hr></div><p>Mým úkolem v projektu bylo propojit front-end s back-endem pomocí
+  serveru Jetty a Servlet&#367; tak, abych vyu&#382;il p&#345;edp&#345;ipravené metody mých
+  koleg&#367;.</p><p>Na za&#269;átku jsem vytvo&#345;il java t&#345;ídu pro spu&#353;t&#283;ní jetty serveru.</p><p>Poté jsem pokra&#269;oval s mapováním url adres na jednotlivé .jsp soubory.
+  Toto mapování jsem vydefinoval v souboru <code class="filename">web.xml</code>, kde
+  jsem si zaregistroval postupn&#283; v&#353;echny url adresy, které jsem cht&#283;l
+  vyu&#382;ívat. Zárove&#328; s registrací jsem v souboru <code class="filename">web.xml</code>
+  uvedl na který servlet se má po&#382;adavek p&#345;esm&#283;rovat.</p><p>Díky mapování v souboru <code class="filename">web.xml</code> jsem zavedl
+  user-friendly url adresy.</p><p>V&#353;echny servlety které jsem vytvo&#345;il zaji&#353;tují komunikaci s
+  front-endem a back-endem pomocí metod doPost a doGet. V metod&#283; doGet obecn&#283;
+  p&#345;edp&#345;ipravuji data, která jsem získal z databáze pro .jsp soubory, do
+  kterých následn&#283; data po&#353;lu. V metod&#283; doPost validuji data získaná z
+  formulá&#345;e, který byl odeslán z .jsp souboru, a p&#345;edávám je do databáze a
+  následn&#283; p&#345;esm&#283;ruji na jiný .jsp soubor.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>Pou&#382;ité technologie: Java, Json.</p></li><li class="listitem"><p>Pou&#382;ité IDE: <span class="application">Intellij Idea</span>.</p></li></ul></div></div></body></html>
