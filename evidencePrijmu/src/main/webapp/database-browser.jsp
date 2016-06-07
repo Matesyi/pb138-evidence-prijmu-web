@@ -98,11 +98,6 @@
             <div class="col-md-6 col-md-offset-3">
                 <a class="tile link-tile btn btn-block" onClick="window.print()" title="generate output from showed invoices"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Export/print the page</a>
             </div>
-            <div class="col-md-6 col-md-offset-3">
-                <form action="/transformation/docbooks" method="post">
-                <button type="submit" class="tile link-tile btn btn-block" onClick="" title="generate output from showed invoices"><i class="fa fa-external-link" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Generate output from showed invoices</button>
-                </form>
-            </div>
         </div>
     </div>
 </div>
